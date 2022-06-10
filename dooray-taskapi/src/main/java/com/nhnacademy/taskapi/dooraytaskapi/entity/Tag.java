@@ -1,5 +1,6 @@
 package com.nhnacademy.taskapi.dooraytaskapi.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,9 @@ public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "tag_no")
     private Integer tagNo;
 
-
+    @Column(name = "tag_name")
+    private String tagName;
 }

@@ -1,5 +1,6 @@
 package com.nhnacademy.taskapi.dooraytaskapi.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,15 @@ public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "project_no")
     private Integer projectNo;
 
+    @Column(name = "project_name")
+    private String projectName;
 
+    @Column(name = "admin_id")
+    private Integer adminId;
+
+    @Column(name = "project_status")
+    private String projectStatus;
 }

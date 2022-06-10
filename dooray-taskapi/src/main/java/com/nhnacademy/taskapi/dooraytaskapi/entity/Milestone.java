@@ -1,5 +1,6 @@
 package com.nhnacademy.taskapi.dooraytaskapi.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,10 @@ public class Milestone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "milestone_no")
     private Integer milestoneNo;
 
+    @Column(name = "milestone_name")
+    private String milestoneName;
 
 }

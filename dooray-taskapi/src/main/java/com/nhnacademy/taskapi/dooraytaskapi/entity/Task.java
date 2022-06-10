@@ -1,5 +1,6 @@
 package com.nhnacademy.taskapi.dooraytaskapi.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,15 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "task_no")
     private Integer taskNo;
 
+    @Column(name = "task_title")
+    private String taskTitle;
 
+    @Column(name = "task_content")
+    private String taskContent;
+
+    @Column(name = "task_registrant")
+    private String taskRegistrant;
 }
