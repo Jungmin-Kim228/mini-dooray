@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>홈</title>
 </head>
 <body>
-<h1>Home</h1>
+<h1>환영합니다.</h1>
 <hr/>
-
+<a th:href="@{'/userRegister'}" th:text="회원가입"></a>
+<a th:href="@{'/loginForm'}" th:text="로그인"></a>
 </body>
 </html>
