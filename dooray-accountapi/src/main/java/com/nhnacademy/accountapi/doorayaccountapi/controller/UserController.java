@@ -20,7 +20,7 @@ public class UserController {
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public String registerUser(@RequestBody UserRequest userRequest) {
-        Integer userNo = userService.registerUser(userRequest);
-        return "success register user: " + userNo;
+        String userId = userService.registerUser(userRequest);
+        return "success register user: " + userId;
     }
 }

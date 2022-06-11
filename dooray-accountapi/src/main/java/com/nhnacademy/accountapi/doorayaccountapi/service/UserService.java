@@ -4,5 +4,5 @@ import com.nhnacademy.accountapi.doorayaccountapi.domain.UserRequest;
 
 public interface UserService {
 
-    Integer registerUser(UserRequest userRequest);
+    String registerUser(UserRequest userRequest);
 }

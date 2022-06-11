@@ -15,13 +15,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public Integer registerUser(UserRequest userRequest) {
+    public String registerUser(UserRequest userRequest) {
         User user = User.addUser()
             .email(userRequest.getUserEmail())
             .id(userRequest.getUserId())
             .pw(userRequest.getUserPw())
             .build();
         userRepository.save(user);
-        return user.getUserNo();
+        return user.getUserId();
     }
 }
