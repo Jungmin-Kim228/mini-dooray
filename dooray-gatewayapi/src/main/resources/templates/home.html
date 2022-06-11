@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>홈</title>
 </head>
 <body>
-<h1>환영합니다.</h1>
+<h1 style="display: inline" sec:authentication="name"></h1>
+<h1 style="display: inline">님 환영합니다!</h1>
 <hr/>
+
+<a sec:authorize="hasRole('ROLE_ANONYMOUS')" th:href="@{'/loginForm'}" th:text="로그인"></a>
+<span sec:authorize="hasRole('ROLE_MEMBER')">
+    <a th:href="${'/project'}" th:text="프로젝트"></a>
+    <a th:href="${'/logout'}" th:text="로그아웃"></a>
+</span>
 <a th:href="@{'/userRegister'}" th:text="회원가입"></a>
-<a th:href="@{'/loginForm'}" th:text="로그인"></a>
+
 </body>
 </html>

@@ -1,7 +1,7 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.service.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.UserAdapter;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserRequest;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,8 +15,8 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public String registerUser(UserRequest userRequest) {
-        userRequest.setUserPw(passwordEncoder.encode(userRequest.getUserPw()));
-        return userAdapter.registerUser(userRequest);
+    public String registerUser(UserDto userDto) {
+        userDto.setUserPw(passwordEncoder.encode(userDto.getUserPw()));
+        return userAdapter.registerUser(userDto);
     }
 }

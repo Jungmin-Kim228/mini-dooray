@@ -1,9 +1,9 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.service;
 
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserRequest;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserDto;
 
 public interface UserService {
 
-    String registerUser(UserRequest userRequest);
+    String registerUser(UserDto userDto);
 
 }

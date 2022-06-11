@@ -15,9 +15,4 @@ public class HomeController {
     public String userRegister() {
         return "userRegister";
     }
-
-    @GetMapping("/loginForm")
-    public String loginForm() {
-        return "loginForm";
-    }
 }

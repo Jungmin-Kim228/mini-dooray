@@ -1,5 +1,6 @@
 package com.nhnacademy.accountapi.doorayaccountapi.service;
 
+import com.nhnacademy.accountapi.doorayaccountapi.domain.UserDto;
 import com.nhnacademy.accountapi.doorayaccountapi.domain.UserRequest;
 import com.nhnacademy.accountapi.doorayaccountapi.entity.User;
 import com.nhnacademy.accountapi.doorayaccountapi.repository.UserRepository;
@@ -23,5 +24,10 @@ public class UserServiceImpl implements UserService {
             .build();
         userRepository.save(user);
         return user.getUserId();
+    }
+
+    @Override
+    public UserDto getUser(String id) {
+        return userRepository.getUserDtoByUserId(id);
     }
 }

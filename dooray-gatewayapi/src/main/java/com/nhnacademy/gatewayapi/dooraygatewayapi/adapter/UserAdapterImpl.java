@@ -1,13 +1,10 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserId;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserRequest;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserDto;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Request;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -16,8 +13,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 @Component
@@ -43,16 +38,31 @@ public class UserAdapterImpl implements UserAdapter {
 
 
     @Override
-    public String registerUser(UserRequest userRequest) {
-        RequestEntity<UserRequest> requestEntity = RequestEntity
+    public String registerUser(UserDto userDto) {
+        RequestEntity<UserDto> requestEntity = RequestEntity
             .post("http://localhost:9090/user/register")
             .accept(MediaType.APPLICATION_JSON)
-            .body(userRequest);
+            .body(userDto);
 
         ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity,
             new ParameterizedTypeReference<String>() {
             });
 
         return responseEntity.getBody();
+    }
+
+    @Override
+    public UserDto getUser(String username) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
+
+        HttpEntity<String> httpEntity = new HttpEntity<>(httpHeaders);
+        ResponseEntity<UserDto> exchange = restTemplate.exchange("http://localhost:9090/user/"+username,
+            HttpMethod.GET,
+            httpEntity,
+            UserDto.class);
+
+        return exchange.getBody();
     }
 }
