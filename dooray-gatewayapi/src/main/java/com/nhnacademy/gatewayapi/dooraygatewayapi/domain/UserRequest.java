@@ -1,15 +1,17 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class UserRequest {
 
-    private String email;
+    private String userEmail;
 
-    private String id;
+    private String userId;
 
-    private String pw;
+    private String userPw;
 }

@@ -6,6 +6,6 @@ Content-Type: application/json
 
 {
   "userEmail": "one@dooray.com",
-  "userId": "userOneId",
-  "userPw": "userOnePw"
+  "userId": "user1",
+  "userPw": "1111"
 }
