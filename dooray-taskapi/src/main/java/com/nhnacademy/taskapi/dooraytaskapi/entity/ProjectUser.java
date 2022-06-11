@@ -5,6 +5,9 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -20,10 +23,11 @@ import lombok.Setter;
 public class ProjectUser {
     @EmbeddedId
     private Pk pk;
-    // here 연관관계 매핑해야함
 
-    @Column(name = "user_id")
-    private String userId;
+    @MapsId("projectNo")
+    @ManyToOne
+    @JoinColumn(name = "project_no")
+    private Project project;
 
     @NoArgsConstructor
     @Getter
@@ -32,10 +36,10 @@ public class ProjectUser {
     @EqualsAndHashCode
     @Embeddable
     public static class Pk implements Serializable {
+        @Column(name = "user_id")
+        private String userId;
+
         @Column(name = "project_no")
         private Integer projectNo;
-
-        @Column(name = "user_no")
-        private Integer userNo;
     }
 }

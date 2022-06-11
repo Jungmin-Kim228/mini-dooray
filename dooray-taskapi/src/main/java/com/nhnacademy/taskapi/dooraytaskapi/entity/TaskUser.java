@@ -19,8 +19,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "task_tag")
-public class TaskTag {
+@Table(name = "task_user")
+public class TaskUser {
 
     @EmbeddedId
     private Pk pk;
@@ -30,11 +30,6 @@ public class TaskTag {
     @JoinColumn(name = "task_no")
     private Task task;
 
-    @MapsId("tagNo")
-    @ManyToOne
-    @JoinColumn(name = "tag_no")
-    private Tag tag;
-
     @NoArgsConstructor
     @Getter
     @Setter
@@ -42,10 +37,10 @@ public class TaskTag {
     @EqualsAndHashCode
     @Embeddable
     public static class Pk implements Serializable {
+        @Column(name = "user_id")
+        private String userId;
+
         @Column(name = "task_no")
         private Integer taskNo;
-
-        @Column(name = "tag_no")
-        private Integer tagNo;
     }
 }
