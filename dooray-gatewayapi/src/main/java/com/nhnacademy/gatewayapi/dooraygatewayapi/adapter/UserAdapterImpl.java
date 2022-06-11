@@ -55,6 +55,4 @@ public class UserAdapterImpl implements UserAdapter {
 
         return responseEntity.getBody();
     }
-    // here 여기서 account api 로 request를 보내면
-    // here 가입 정보 저장 하고 userid 빼오기
 }
