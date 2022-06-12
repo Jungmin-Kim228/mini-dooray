@@ -14,7 +14,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     private final ProjectUserAdapter projectUserAdapter;
 
     @Override
-    public List<ProjectUserDto> getProjectUserDtoByProjectNo(Integer projectNo) {
-        return projectUserAdapter.getProjectUserDtoByProjectNo(projectNo);
+    public List<ProjectUserDto> getProjectUserDtosByProjectNo(Integer projectNo) {
+        return projectUserAdapter.getProjectUserDtosByProjectNo(projectNo);
     }
 }

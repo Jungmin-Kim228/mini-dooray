@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface MilestoneAdapter {
 
-    List<MilestoneDto> getMilestoneDtoByProjectNo(Integer projectNo);
+    List<MilestoneDto> getMilestoneDtosByProjectNo(Integer projectNo);
 }

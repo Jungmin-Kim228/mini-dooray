@@ -21,7 +21,7 @@ public class ProjectUserAdapterImpl implements ProjectUserAdapter {
     private final RestTemplate restTemplate;
 
     @Override
-    public List<ProjectUserDto> getProjectUserDtoByProjectNo(Integer projectNo) {
+    public List<ProjectUserDto> getProjectUserDtosByProjectNo(Integer projectNo) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
