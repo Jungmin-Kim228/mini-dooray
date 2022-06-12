@@ -30,7 +30,7 @@ public class ProjectAdapterImpl implements ProjectAdapter {
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
         ResponseEntity<List<ProjectDto>> exchange = restTemplate.exchange(
-            "http://localhost:9091/projects/"+userName,
+            "http://localhost:9091/project/"+userName,
             HttpMethod.GET,
             requestEntity,
             new ParameterizedTypeReference<List<ProjectDto>>() {

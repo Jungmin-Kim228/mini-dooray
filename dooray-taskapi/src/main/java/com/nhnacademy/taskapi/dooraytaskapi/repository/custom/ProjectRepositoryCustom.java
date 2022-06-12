@@ -9,4 +9,6 @@ import org.springframework.data.repository.NoRepositoryBean;
 public interface ProjectRepositoryCustom {
 
     List<ProjectDto> getOwnProjects(String id);
+
+    ProjectRequest getProjectDtoByProjectNo(Integer projectNo);
 }

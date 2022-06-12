@@ -11,7 +11,4 @@ import org.springframework.stereotype.Repository;
 public interface ProjectRepository extends JpaRepository<Project, Integer>,
     ProjectRepositoryCustom {
 
-    @Query("select p.projectName, p.adminId from Project p where p.projectNo = ?1")
-    ProjectRequest getProjectDtoByProjectNo(Integer projectNo);
-
 }
