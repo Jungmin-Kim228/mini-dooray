@@ -23,7 +23,7 @@ public class MilestoneServiceImpl implements MilestoneService {
 
     @Override
     public List<MilestoneDto> getMilestoneByProjectNo(Integer no) {
-        return milestoneRepository.getMilestoneByProjectNo(no);
+        return milestoneRepository.getMilestonesByProject_ProjectNo(no);
     }
 
     @Override

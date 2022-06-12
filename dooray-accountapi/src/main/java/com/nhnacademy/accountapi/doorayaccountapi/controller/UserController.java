@@ -1,8 +1,10 @@
 package com.nhnacademy.accountapi.doorayaccountapi.controller;
 
 import com.nhnacademy.accountapi.doorayaccountapi.domain.UserDto;
+import com.nhnacademy.accountapi.doorayaccountapi.domain.UserIdOnlyDto;
 import com.nhnacademy.accountapi.doorayaccountapi.domain.UserRequest;
 import com.nhnacademy.accountapi.doorayaccountapi.service.UserService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,5 +31,10 @@ public class UserController {
     @GetMapping("/{id}")
     public UserDto getUser(@PathVariable("id") String id) {
         return userService.getUser(id);
+    }
+
+    @GetMapping("/all")
+    public List<UserIdOnlyDto> getAllUserId() {
+        return userService.getAllUserId();
     }
 }

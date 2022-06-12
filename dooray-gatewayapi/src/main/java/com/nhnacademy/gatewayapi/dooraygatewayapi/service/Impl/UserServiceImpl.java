@@ -2,7 +2,9 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.service.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.UserAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserIdOnlyDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.UserService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,5 +25,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUser(String username) {
         return userAdapter.getUser(username);
+    }
+
+    @Override
+    public List<UserIdOnlyDto> getAllUserId() {
+        return userAdapter.getAllUserId();
     }
 }

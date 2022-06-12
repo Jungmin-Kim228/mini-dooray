@@ -27,4 +27,6 @@ public class UserController {
         model.addAttribute("userId", userId);
         return "user/userRegisterSuccess";
     }
+
+
 }

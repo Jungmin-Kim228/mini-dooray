@@ -3,11 +3,9 @@ package com.nhnacademy.taskapi.dooraytaskapi.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-public class MilestoneDto {
+public interface MilestoneDto {
 
-    private Integer milestoneNo;
+    Integer getMilestoneNo();
 
-    private String milestoneName;
+    String getMilestoneName();
 }

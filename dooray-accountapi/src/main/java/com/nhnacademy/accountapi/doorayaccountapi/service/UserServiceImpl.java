@@ -1,9 +1,11 @@
 package com.nhnacademy.accountapi.doorayaccountapi.service;
 
 import com.nhnacademy.accountapi.doorayaccountapi.domain.UserDto;
+import com.nhnacademy.accountapi.doorayaccountapi.domain.UserIdOnlyDto;
 import com.nhnacademy.accountapi.doorayaccountapi.domain.UserRequest;
 import com.nhnacademy.accountapi.doorayaccountapi.entity.User;
 import com.nhnacademy.accountapi.doorayaccountapi.repository.UserRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,5 +31,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUser(String id) {
         return userRepository.findByUserId(id);
+    }
+
+    @Override
+    public List<UserIdOnlyDto> getAllUserId() {
+        return userRepository.getAllBy();
     }
 }
