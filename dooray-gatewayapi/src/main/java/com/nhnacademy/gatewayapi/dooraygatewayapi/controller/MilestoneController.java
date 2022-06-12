@@ -1,5 +1,6 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.controller;
 
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.MilestoneService;
 import lombok.RequiredArgsConstructor;
@@ -26,5 +27,17 @@ public class MilestoneController {
     public String milestoneRegister(@ModelAttribute MilestoneRegisterRequest request) {
         milestoneService.registerMilestone(request);
         return "redirect:/project/detail/"+request.getProjectNo();
+    }
+
+    @GetMapping("/milestoneModify/{milestoneNo}")
+    public String milestoneModifyForm(@PathVariable("milestoneNo") Integer milestoneNo, Model model) {
+        model.addAttribute("milestoneNo", milestoneNo);
+        return "milestone/milestoneModifyForm";
+    }
+
+    @PostMapping("/milestoneModify")
+    public String milestoneModify(@ModelAttribute MilestoneModifyRequest request) {
+        Integer projectNo = milestoneService.modifyMilestone(request);
+        return "redirect:/project/detail/"+projectNo;
     }
 }

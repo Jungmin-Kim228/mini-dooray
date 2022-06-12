@@ -1,6 +1,7 @@
 package com.nhnacademy.taskapi.dooraytaskapi.controller;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.MilestoneDto;
+import com.nhnacademy.taskapi.dooraytaskapi.domain.MilestoneModifyRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.MilestoneRegisterRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.service.MilestoneService;
 import java.util.List;
@@ -27,5 +28,10 @@ public class MilestoneController {
     @PostMapping("/register")
     public void registerMilestone(@RequestBody MilestoneRegisterRequest request) {
         milestoneService.registerMilestone(request);
+    }
+
+    @PostMapping("/modify")
+    public Integer modifyMilestone(@RequestBody MilestoneModifyRequest request) {
+        return milestoneService.modifyMilestone(request);
     }
 }

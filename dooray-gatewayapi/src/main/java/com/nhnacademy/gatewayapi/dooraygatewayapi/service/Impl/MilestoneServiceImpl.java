@@ -2,6 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.service.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.MilestoneAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.MilestoneService;
 import java.util.List;
@@ -22,5 +23,10 @@ public class MilestoneServiceImpl implements MilestoneService {
     @Override
     public void registerMilestone(MilestoneRegisterRequest request) {
         milestoneAdapter.registerMilestone(request);
+    }
+
+    @Override
+    public Integer modifyMilestone(MilestoneModifyRequest request) {
+        return milestoneAdapter.modifyMilestone(request);
     }
 }

@@ -2,8 +2,8 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.MilestoneAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneRegisterRequest;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectRegisterRequest;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
@@ -46,5 +46,15 @@ public class MilestoneAdapterImpl implements MilestoneAdapter {
             .body(request);
 
         restTemplate.exchange(requestEntity, new ParameterizedTypeReference<String>() {});
+    }
+
+    @Override
+    public Integer modifyMilestone(MilestoneModifyRequest request) {
+        RequestEntity<MilestoneModifyRequest> requestEntity = RequestEntity
+            .post("http://localhost:9091/milestone/modify")
+            .accept(MediaType.APPLICATION_JSON)
+            .body(request);
+
+        return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
     }
 }

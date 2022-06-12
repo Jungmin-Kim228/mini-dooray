@@ -23,4 +23,9 @@ public class TagServiceImpl implements TagService {
     public void registerTag(TagRegisterRequest request) {
         tagAdapter.registerTag(request);
     }
+
+    @Override
+    public void modifyTag(TagRegisterRequest request) {
+        tagAdapter.modifyTag(request);
+    }
 }

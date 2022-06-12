@@ -1,9 +1,11 @@
 package com.nhnacademy.taskapi.dooraytaskapi.service.Impl;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.MilestoneDto;
+import com.nhnacademy.taskapi.dooraytaskapi.domain.MilestoneModifyRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.MilestoneRegisterRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.Milestone;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.Project;
+import com.nhnacademy.taskapi.dooraytaskapi.exception.MilestoneNotFoundException;
 import com.nhnacademy.taskapi.dooraytaskapi.exception.ProjectNotFoundException;
 import com.nhnacademy.taskapi.dooraytaskapi.repository.MilestoneRepository;
 import com.nhnacademy.taskapi.dooraytaskapi.repository.ProjectRepository;
@@ -32,5 +34,14 @@ public class MilestoneServiceImpl implements MilestoneService {
             .project(project)
             .build();
         milestoneRepository.save(milestone);
+    }
+
+    @Override
+    public Integer modifyMilestone(MilestoneModifyRequest request) {
+        Milestone milestone = milestoneRepository.findById(request.getMilestoneNo()).orElseThrow(
+            MilestoneNotFoundException::new);
+        milestone.setMilestoneName(request.getMilestoneName());
+        milestoneRepository.save(milestone);
+        return milestone.getProject().getProjectNo();
     }
 }

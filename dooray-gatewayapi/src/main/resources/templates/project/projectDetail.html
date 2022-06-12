@@ -32,8 +32,8 @@
     <tr th:each="milestone : ${milestones}">
         <td th:text="${milestone.milestoneName}"></td>
         <td>
-            <a th:href="@{/milestone/modify/{projectNo}(projectNo = ${project.projectNo})}"><button>수정</button></a>
-            <a th:href="@{/milestone/delete/{projectNo}(projectNo = ${project.projectNo})}"><button>삭제</button></a>
+            <a th:href="@{/milestoneModify/{milestoneNo}(milestoneNo = ${milestone.milestoneNo})}"><button>수정</button></a>
+            <a th:href="@{/milestoneDelete/{milestoneNo}(milestoneNo = ${milestone.milestoneNo})}"><button>삭제</button></a>
         </td>
     </tr>
 </table><hr/>
@@ -47,8 +47,8 @@
     <tr th:each="tag : ${tags}">
         <td th:text="${tag.tagName}"></td>
         <td>
-            <a th:href="@{/tag/modify/{projectNo}(projectNo = ${project.projectNo})}"><button>수정</button></a>
-            <a th:href="@{/tag/delete/{projectNo}(projectNo = ${project.projectNo})}"><button>삭제</button></a>
+            <a th:href="@{/tagModify/{tagNo}(tagNo = ${tag.tagNo})}"><button>수정</button></a>
+            <a th:href="@{/tagDelete/{tagNo}(tagNo = ${tag.tagNo})}"><button>삭제</button></a>
         </td>
     </tr>
 </table><hr/>

@@ -9,4 +9,6 @@ public interface TagAdapter {
     List<TagDto> getTagDtosByProjectNo(Integer projectNo);
 
     void registerTag(TagRegisterRequest request);
+
+    void modifyTag(TagRegisterRequest request);
 }

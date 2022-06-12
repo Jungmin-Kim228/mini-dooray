@@ -1,10 +1,8 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.TagAdapter;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagRegisterRequest;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
@@ -43,6 +41,16 @@ public class TagAdapterImpl implements TagAdapter {
     public void registerTag(TagRegisterRequest request) {
         RequestEntity<TagRegisterRequest> requestEntity = RequestEntity
             .post("http://localhost:9091/tag/register")
+            .accept(MediaType.APPLICATION_JSON)
+            .body(request);
+
+        restTemplate.exchange(requestEntity, new ParameterizedTypeReference<String>() {});
+    }
+
+    @Override
+    public void modifyTag(TagRegisterRequest request) {
+        RequestEntity<TagRegisterRequest> requestEntity = RequestEntity
+            .post("http://localhost:9091/tag/modify")
             .accept(MediaType.APPLICATION_JSON)
             .body(request);
 

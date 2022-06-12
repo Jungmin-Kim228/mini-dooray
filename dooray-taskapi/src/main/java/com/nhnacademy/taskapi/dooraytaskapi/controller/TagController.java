@@ -1,6 +1,5 @@
 package com.nhnacademy.taskapi.dooraytaskapi.controller;
 
-import com.nhnacademy.taskapi.dooraytaskapi.domain.MilestoneRegisterRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TagDto;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TagRegisterRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.service.TagService;

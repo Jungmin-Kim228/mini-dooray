@@ -27,4 +27,16 @@ public class TagController {
         tagService.registerTag(request);
         return "redirect:/project/detail/"+request.getProjectNo();
     }
+
+    @GetMapping("/tagModify/{tagNo}")
+    public String tagModifyForm(@PathVariable("tagNo") Integer tagNo, Model model) {
+        model.addAttribute("tagNo", tagNo);
+        return "tag/tagModifyForm";
+    }
+
+//    @PostMapping("tagModify")
+//    public String tagModify(@ModelAttribute TagModifyRequest request) {
+//        tagService.modifyTag(request);
+//        return "redirect:/project/detail/"+request.getProjectNo();
+//    }
 }

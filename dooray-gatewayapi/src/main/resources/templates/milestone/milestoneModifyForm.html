@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>마일스톤 수정</title>
+</head>
+<body>
+<h1>마일스톤 수정</h1><hr/>
+<form action="/milestoneModify" method="post">
+    이름: <input type="text" name="milestoneName"/>
+    <input type="hidden" name="milestoneNo" th:value="${milestoneNo}"/>
+    <input type="submit" value="수정"/>
+</form>
+</body>
+</html>

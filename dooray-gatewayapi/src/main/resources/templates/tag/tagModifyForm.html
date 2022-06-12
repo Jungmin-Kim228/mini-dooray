@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>태그 수정</title>
+</head>
+<body>
+<h1>태그 수정</h1><hr/>
+<form action="/tagModify" method="post">
+    이름: <input type="text" name="tagName"/>
+    <input type="hidden" name="tagNo" th:value="${tagNo}"/>
+    <input type="submit" value="수정"/>
+</form>
+</body>
+</html>
