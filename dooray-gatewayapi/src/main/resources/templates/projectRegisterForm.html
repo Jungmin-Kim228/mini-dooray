@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>프로젝트 생성</title>
+</head>
+<body>
+<h1>프로젝트 생성</h1>
+<hr/>
+<form action="/project/register" method="post">
+    프로젝트 이름: <input type="text" name="projectName"/><br/>
+    <input type="hidden" name="adminId" th:value="${userName}"/>
+    <input type="hidden" name="projectStatus" value="활성"/>
+    <input type="submit" value="생성"/>
+</form>
+</body>
+</html>

@@ -19,4 +19,9 @@ public class UserServiceImpl implements UserService {
         userDto.setUserPw(passwordEncoder.encode(userDto.getUserPw()));
         return userAdapter.registerUser(userDto);
     }
+
+    @Override
+    public UserDto getUser(String username) {
+        return userAdapter.getUser(username);
+    }
 }
