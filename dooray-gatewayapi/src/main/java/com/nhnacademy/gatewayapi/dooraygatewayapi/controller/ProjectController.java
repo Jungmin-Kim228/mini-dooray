@@ -2,7 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.controller;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectDto;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectRequest;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
@@ -49,8 +49,8 @@ public class ProjectController {
     }
 
     @PostMapping("/project/register")
-    public String projectRegister(@ModelAttribute ProjectRequest projectRequest) {
-        projectService.registerProject(projectRequest);
+    public String projectRegister(@ModelAttribute ProjectRegisterRequest request) {
+        projectService.registerProject(request);
         return "redirect:/projectList";
     }
 

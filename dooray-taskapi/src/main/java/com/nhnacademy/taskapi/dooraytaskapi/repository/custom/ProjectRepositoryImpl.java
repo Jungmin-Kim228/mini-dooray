@@ -1,7 +1,7 @@
 package com.nhnacademy.taskapi.dooraytaskapi.repository.custom;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectDto;
-import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectRequest;
+import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectRegisterRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.Project;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.QProject;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.QProjectUser;
@@ -31,25 +31,16 @@ public class ProjectRepositoryImpl extends QuerydslRepositorySupport implements 
     }
 
     @Override
-    public ProjectRequest getProjectDtoByProjectNo(Integer no) {
+    public ProjectDto getProjectDtoByProjectNo(Integer no) {
         QProject project = QProject.project;
 
         return from(project)
             .where(project.projectNo.eq(no))
-            .select(Projections.bean(ProjectRequest.class,
+            .select(Projections.bean(ProjectDto.class,
+                project.projectNo,
                 project.projectName,
                 project.adminId,
                 project.projectStatus))
-            .fetchOne();
-    }
-
-    @Override
-    public String getProjectNameByProjectNo(Integer no) {
-        QProject project = QProject.project;
-
-        return from(project)
-            .where(project.projectNo.eq(no))
-            .select(project.projectName)
             .fetchOne();
     }
 }

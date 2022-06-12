@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,4 +31,12 @@ public class Tag {
     @ManyToOne
     @JoinColumn(name = "project_no")
     private Project project;
+
+    @Builder(builderMethodName = "addTag")
+    public static Tag registerTag(String name, Project project) {
+        Tag tag = new Tag();
+        tag.setTagName(name);
+        tag.setProject(project);
+        return tag;
+    }
 }

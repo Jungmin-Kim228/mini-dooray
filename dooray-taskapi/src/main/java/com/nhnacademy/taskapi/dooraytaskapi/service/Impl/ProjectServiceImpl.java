@@ -1,7 +1,7 @@
 package com.nhnacademy.taskapi.dooraytaskapi.service.Impl;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectDto;
-import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectRequest;
+import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectRegisterRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.Project;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.ProjectUser;
 import com.nhnacademy.taskapi.dooraytaskapi.repository.ProjectRepository;
@@ -24,11 +24,11 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public ProjectRequest registerProject(ProjectRequest projectRequest) {
+    public void registerProject(ProjectRegisterRequest request) {
         Project project = Project.addProject()
-                                 .name(projectRequest.getProjectName())
-                                 .admin(projectRequest.getAdminId())
-                                 .status(projectRequest.getProjectStatus())
+                                 .name(request.getProjectName())
+                                 .admin(request.getAdminId())
+                                 .status(request.getProjectStatus())
                                  .build();
         projectRepository.save(project);
         ProjectUser projectUser = ProjectUser.addProjectUser()
@@ -36,11 +36,10 @@ public class ProjectServiceImpl implements ProjectService {
                                              .id(project.getAdminId())
                                              .build();
         projectUserRepository.save(projectUser);
-        return projectRepository.getProjectDtoByProjectNo(project.getProjectNo());
     }
 
     @Override
-    public String getProjectNameByNo(Integer no) {
-        return projectRepository.getProjectNameByProjectNo(no);
+    public ProjectDto getProjectDtoByProjectNo(Integer no) {
+        return projectRepository.getProjectDtoByProjectNo(no);
     }
 }

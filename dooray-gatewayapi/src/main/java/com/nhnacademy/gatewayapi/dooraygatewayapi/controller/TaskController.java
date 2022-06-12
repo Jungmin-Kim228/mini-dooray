@@ -16,11 +16,11 @@ public class TaskController {
     private final TaskService taskService;
 
     @GetMapping("/taskRegister/{projectNo}")
-    public String taskRegister(@PathVariable("projectNo") Integer projectNo,
+    public String taskRegisterForm(@PathVariable("projectNo") Integer projectNo,
                                Authentication authentication, Model model) {
         String userName = ((User) authentication.getPrincipal()).getUsername();
         model.addAttribute("projectNo", projectNo);
         model.addAttribute("userName", userName);
-        return "taskRegisterForm";
+        return "task/taskRegisterForm";
     }
 }

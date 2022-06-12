@@ -2,7 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.service.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.ProjectAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectDto;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectRequest;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.ProjectService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +20,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void registerProject(ProjectRequest projectRequest) {
-        projectAdapter.registerProject(projectRequest);
+    public void registerProject(ProjectRegisterRequest projectRegisterRequest) {
+        projectAdapter.registerProject(projectRegisterRequest);
     }
 
     @Override

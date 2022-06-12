@@ -1,7 +1,7 @@
 package com.nhnacademy.taskapi.dooraytaskapi.repository.custom;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectDto;
-import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectRequest;
+import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectRegisterRequest;
 import java.util.List;
 import org.springframework.data.repository.NoRepositoryBean;
 
@@ -10,7 +10,5 @@ public interface ProjectRepositoryCustom {
 
     List<ProjectDto> getOwnProjects(String id);
 
-    ProjectRequest getProjectDtoByProjectNo(Integer no);
-
-    String getProjectNameByProjectNo(Integer no);
+    ProjectDto getProjectDtoByProjectNo(Integer no);
 }

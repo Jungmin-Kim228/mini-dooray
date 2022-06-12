@@ -2,7 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.ProjectAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectDto;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectRequest;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectRegisterRequest;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
@@ -38,11 +38,11 @@ public class ProjectAdapterImpl implements ProjectAdapter {
     }
 
     @Override
-    public void registerProject(ProjectRequest projectRequest) {
-        RequestEntity<ProjectRequest> requestEntity = RequestEntity
+    public void registerProject(ProjectRegisterRequest projectRegisterRequest) {
+        RequestEntity<ProjectRegisterRequest> requestEntity = RequestEntity
             .post("http://localhost:9091/project/register")
             .accept(MediaType.APPLICATION_JSON)
-            .body(projectRequest);
+            .body(projectRegisterRequest);
 
         restTemplate.exchange(requestEntity, new ParameterizedTypeReference<String>() {});
     }

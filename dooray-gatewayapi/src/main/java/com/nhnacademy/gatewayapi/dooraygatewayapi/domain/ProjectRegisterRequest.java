@@ -1,11 +1,11 @@
-package com.nhnacademy.taskapi.dooraytaskapi.domain;
+package com.nhnacademy.gatewayapi.dooraygatewayapi.domain;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ProjectRequest {
+public class ProjectRegisterRequest {
 
     private String projectName;
 

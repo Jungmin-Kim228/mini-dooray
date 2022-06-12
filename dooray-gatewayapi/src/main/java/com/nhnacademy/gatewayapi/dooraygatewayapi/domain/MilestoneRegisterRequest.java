@@ -5,11 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProjectRequest {
+public class MilestoneRegisterRequest {
 
-    private String projectName;
+    private String milestoneName;
 
-    private String adminId;
-
-    private String projectStatus;
+    private Integer projectNo;
 }

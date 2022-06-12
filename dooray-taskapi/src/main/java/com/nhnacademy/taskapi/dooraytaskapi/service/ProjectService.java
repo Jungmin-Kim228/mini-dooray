@@ -1,14 +1,14 @@
 package com.nhnacademy.taskapi.dooraytaskapi.service;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectDto;
-import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectRequest;
+import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectRegisterRequest;
 import java.util.List;
 
 public interface ProjectService {
 
     List<ProjectDto> getOwnProjects(String id);
 
-    ProjectRequest registerProject(ProjectRequest projectRequest);
+    void registerProject(ProjectRegisterRequest request);
 
-    String getProjectNameByNo(Integer no);
+    ProjectDto getProjectDtoByProjectNo(Integer no);
 }
