@@ -57,4 +57,14 @@ public class MilestoneAdapterImpl implements MilestoneAdapter {
 
         return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
     }
+
+    @Override
+    public Integer deleteMilestone(Integer milestoneNo) {
+        RequestEntity<Integer> requestEntity = RequestEntity
+            .post("http://localhost:9091/milestone/delete")
+            .accept(MediaType.APPLICATION_JSON)
+            .body(milestoneNo);
+
+        return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
+    }
 }

@@ -57,4 +57,14 @@ public class TagAdapterImpl implements TagAdapter {
 
         return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
     }
+
+    @Override
+    public Integer deleteTag(Integer tagNo) {
+        RequestEntity<Integer> requestEntity = RequestEntity
+            .post("http://localhost:9091/tag/delete")
+            .accept(MediaType.APPLICATION_JSON)
+            .body(tagNo);
+
+        return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
+    }
 }

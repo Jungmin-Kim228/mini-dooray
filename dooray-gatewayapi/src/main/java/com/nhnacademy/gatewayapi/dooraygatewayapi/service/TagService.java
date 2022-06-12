@@ -12,4 +12,6 @@ public interface TagService {
     void registerTag(TagRegisterRequest request);
 
     Integer modifyTag(TagModifyRequest request);
+
+    Integer deleteTag(Integer tagNo);
 }

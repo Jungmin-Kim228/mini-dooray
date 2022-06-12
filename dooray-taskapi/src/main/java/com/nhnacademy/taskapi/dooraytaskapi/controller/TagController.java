@@ -34,4 +34,9 @@ public class TagController {
     public Integer modifyTag(@RequestBody TagModifyRequest request) {
         return tagService.modifyTag(request);
     }
+
+    @PostMapping("/delete")
+    public Integer deleteTag(@RequestBody Integer request) {
+        return tagService.deleteTag(request);
+    }
 }

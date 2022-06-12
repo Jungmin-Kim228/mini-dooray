@@ -34,4 +34,9 @@ public class MilestoneController {
     public Integer modifyMilestone(@RequestBody MilestoneModifyRequest request) {
         return milestoneService.modifyMilestone(request);
     }
+
+    @PostMapping("/delete")
+    public Integer deleteMilestone(@RequestBody Integer request) {
+        return milestoneService.deleteMilestone(request);
+    }
 }

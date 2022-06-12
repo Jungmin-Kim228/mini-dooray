@@ -15,7 +15,7 @@ public class TaskController {
 
     private final TaskService taskService;
 
-    @GetMapping("/taskRegister/{projectNo}")
+    @GetMapping("/task/register/{projectNo}")
     public String taskRegisterForm(@PathVariable("projectNo") Integer projectNo,
                                Authentication authentication, Model model) {
         String userName = ((User) authentication.getPrincipal()).getUsername();

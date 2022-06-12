@@ -44,4 +44,12 @@ public class TagServiceImpl implements TagService {
         tagRepository.save(tag);
         return tag.getProject().getProjectNo();
     }
+
+    @Override
+    public Integer deleteTag(Integer request) {
+        Tag tag = tagRepository.findById(request).orElseThrow(TagNotFoundException::new);
+        Integer projectNo = tag.getProject().getProjectNo();
+        tagRepository.delete(tag);
+        return projectNo;
+    }
 }

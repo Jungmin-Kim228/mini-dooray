@@ -29,4 +29,9 @@ public class TagServiceImpl implements TagService {
     public Integer modifyTag(TagModifyRequest request) {
         return tagAdapter.modifyTag(request);
     }
+
+    @Override
+    public Integer deleteTag(Integer tagNo) {
+        return tagAdapter.deleteTag(tagNo);
+    }
 }

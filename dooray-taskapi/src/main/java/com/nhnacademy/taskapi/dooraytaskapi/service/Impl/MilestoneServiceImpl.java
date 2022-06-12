@@ -44,4 +44,12 @@ public class MilestoneServiceImpl implements MilestoneService {
         milestoneRepository.save(milestone);
         return milestone.getProject().getProjectNo();
     }
+
+    @Override
+    public Integer deleteMilestone(Integer request) {
+        Milestone milestone = milestoneRepository.findById(request).orElseThrow(MilestoneNotFoundException::new);
+        Integer projectNo = milestone.getProject().getProjectNo();
+        milestoneRepository.delete(milestone);
+        return projectNo;
+    }
 }

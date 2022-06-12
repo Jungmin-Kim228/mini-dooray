@@ -12,4 +12,6 @@ public interface MilestoneAdapter {
     void registerMilestone(MilestoneRegisterRequest request);
 
     Integer modifyMilestone(MilestoneModifyRequest request);
+
+    Integer deleteMilestone(Integer milestoneNo);
 }

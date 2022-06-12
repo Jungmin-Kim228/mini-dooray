@@ -41,5 +41,9 @@ public class MilestoneController {
         return "redirect:/project/detail/"+projectNo;
     }
 
-//    @GetMapping("/milestone/delete")
+    @GetMapping("/milestone/delete/{milestoneNo}")
+    public String milestoneDelete(@PathVariable("milestoneNo") Integer milestoneNo) {
+        Integer projectNo = milestoneService.deleteMilestone(milestoneNo);
+        return "redirect:/project/detail/"+projectNo;
+    }
 }

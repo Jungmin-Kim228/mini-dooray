@@ -29,4 +29,9 @@ public class MilestoneServiceImpl implements MilestoneService {
     public Integer modifyMilestone(MilestoneModifyRequest request) {
         return milestoneAdapter.modifyMilestone(request);
     }
+
+    @Override
+    public Integer deleteMilestone(Integer milestoneNo) {
+        return milestoneAdapter.deleteMilestone(milestoneNo);
+    }
 }

@@ -10,7 +10,7 @@
 <a th:href="@{'/'}" th:text="홈으로"></a>
 <hr/>
 <h4 th:text="태스크"></h4>
-<a th:href="@{/taskRegister/{projectNo}(projectNo = ${project.projectNo})}">태스크 추가</a>
+<a th:href="@{/task/register/{projectNo}(projectNo = ${project.projectNo})}">태스크 추가</a>
 <!-- here 편집(추가,,,, 수정,삭제는 상세로 들어가서...?)버튼-->
 <table th:border="1">
     <tr>
@@ -53,7 +53,7 @@
     </tr>
 </table><hr/>
 <h4 th:text="프로젝트멤버"></h4>
-<a th:href="@{/projectUserRegister/{projectNo}(projectNo = ${project.projectNo})}">멤버추가</a>
+<a th:href="@{/projectUser/register/{projectNo}(projectNo = ${project.projectNo})}">멤버추가</a>
 <table th:border="1">
     <tr>
         <th>아이디</th>

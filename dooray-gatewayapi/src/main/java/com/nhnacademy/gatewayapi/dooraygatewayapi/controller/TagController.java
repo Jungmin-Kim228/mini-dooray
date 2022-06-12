@@ -35,9 +35,15 @@ public class TagController {
         return "tag/tagModifyForm";
     }
 
-    @PostMapping("tag/modify")
+    @PostMapping("/tag/modify")
     public String tagModify(@ModelAttribute TagModifyRequest request) {
         Integer projectNo = tagService.modifyTag(request);
+        return "redirect:/project/detail/"+projectNo;
+    }
+
+    @GetMapping("/tag/delete/{tagNo}")
+    public String tagDelete(@PathVariable("tagNo") Integer tagNo) {
+        Integer projectNo = tagService.deleteTag(tagNo);
         return "redirect:/project/detail/"+projectNo;
     }
 }
