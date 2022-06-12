@@ -1,9 +1,8 @@
-package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter;
+package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
+import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.UserAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserDto;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;

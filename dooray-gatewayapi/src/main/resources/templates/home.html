@@ -11,8 +11,8 @@
 
 <a sec:authorize="hasRole('ROLE_ANONYMOUS')" th:href="@{'/loginForm'}" th:text="로그인"></a>
 <span sec:authorize="hasRole('ROLE_MEMBER')">
-    <a th:href="${'/project'}" th:text="프로젝트"></a>
-    <a th:href="${'/logout'}" th:text="로그아웃"></a>
+    <a th:href="${'/projectList'}" th:text="프로젝트"></a><br/>
+    <a th:href="${'/logout'}" th:text="로그아웃"></a><br/>
 </span>
 <a th:href="@{'/userRegister'}" th:text="회원가입"></a>
 
