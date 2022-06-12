@@ -38,4 +38,9 @@ public class ProjectServiceImpl implements ProjectService {
         projectUserRepository.save(projectUser);
         return projectRepository.getProjectDtoByProjectNo(project.getProjectNo());
     }
+
+    @Override
+    public String getProjectNameByNo(Integer no) {
+        return projectRepository.getProjectNameByProjectNo(no);
+    }
 }

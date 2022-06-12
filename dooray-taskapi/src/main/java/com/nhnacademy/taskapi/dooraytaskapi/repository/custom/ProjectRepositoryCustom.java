@@ -10,5 +10,7 @@ public interface ProjectRepositoryCustom {
 
     List<ProjectDto> getOwnProjects(String id);
 
-    ProjectRequest getProjectDtoByProjectNo(Integer projectNo);
+    ProjectRequest getProjectDtoByProjectNo(Integer no);
+
+    String getProjectNameByProjectNo(Integer no);
 }

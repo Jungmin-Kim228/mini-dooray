@@ -32,4 +32,9 @@ public class ProjectController {
     public ProjectRequest registerProject(@RequestBody ProjectRequest projectRequest) {
         return projectService.registerProject(projectRequest);
     }
+
+    @GetMapping("/no/{no}")
+    public String getProjectNameByNo(@PathVariable("no") Integer no) {
+        return projectService.getProjectNameByNo(no);
+    }
 }

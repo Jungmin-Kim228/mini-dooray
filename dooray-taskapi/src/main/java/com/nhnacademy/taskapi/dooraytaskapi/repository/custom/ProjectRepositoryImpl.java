@@ -31,16 +31,25 @@ public class ProjectRepositoryImpl extends QuerydslRepositorySupport implements 
     }
 
     @Override
-    public ProjectRequest getProjectDtoByProjectNo(Integer projectNo) {
+    public ProjectRequest getProjectDtoByProjectNo(Integer no) {
         QProject project = QProject.project;
 
         return from(project)
-            .where(project.projectNo.eq(projectNo))
+            .where(project.projectNo.eq(no))
             .select(Projections.bean(ProjectRequest.class,
                 project.projectName,
                 project.adminId,
                 project.projectStatus))
             .fetchOne();
+    }
 
+    @Override
+    public String getProjectNameByProjectNo(Integer no) {
+        QProject project = QProject.project;
+
+        return from(project)
+            .where(project.projectNo.eq(no))
+            .select(project.projectName)
+            .fetchOne();
     }
 }

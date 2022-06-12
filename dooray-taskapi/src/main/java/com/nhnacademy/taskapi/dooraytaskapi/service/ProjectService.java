@@ -9,4 +9,6 @@ public interface ProjectService {
     List<ProjectDto> getOwnProjects(String id);
 
     ProjectRequest registerProject(ProjectRequest projectRequest);
+
+    String getProjectNameByNo(Integer no);
 }
