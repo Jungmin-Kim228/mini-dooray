@@ -8,7 +8,7 @@ public class LoginController {
 
     @GetMapping("/loginForm")
     public String loginForm() {
-        return "loginForm";
+        return "login/loginForm";
     }
 
 }

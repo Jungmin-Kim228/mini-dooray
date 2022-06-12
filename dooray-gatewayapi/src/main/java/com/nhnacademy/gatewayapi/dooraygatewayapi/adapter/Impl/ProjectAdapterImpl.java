@@ -2,9 +2,9 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.ProjectAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectRequest;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-@Slf4j
 @Component
 @RequiredArgsConstructor
 public class ProjectAdapterImpl implements ProjectAdapter {
@@ -30,7 +29,7 @@ public class ProjectAdapterImpl implements ProjectAdapter {
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
         ResponseEntity<List<ProjectDto>> exchange = restTemplate.exchange(
-            "http://localhost:9091/project/"+userName,
+            "http://localhost:9091/project/" + userName,
             HttpMethod.GET,
             requestEntity,
             new ParameterizedTypeReference<List<ProjectDto>>() {
@@ -39,15 +38,28 @@ public class ProjectAdapterImpl implements ProjectAdapter {
     }
 
     @Override
-    public void registerProject(ProjectDto projectDto) {
-        RequestEntity<ProjectDto> requestEntity = RequestEntity
+    public void registerProject(ProjectRequest projectRequest) {
+        RequestEntity<ProjectRequest> requestEntity = RequestEntity
             .post("http://localhost:9091/project/register")
             .accept(MediaType.APPLICATION_JSON)
-            .body(projectDto);
+            .body(projectRequest);
 
-        ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity,
-            new ParameterizedTypeReference<String>() {});
+        restTemplate.exchange(requestEntity, new ParameterizedTypeReference<String>() {});
+    }
 
-        log.info(responseEntity.getBody());
+    @Override
+    public String getProjectNameByNo(Integer projectNo) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
+        ResponseEntity<String> exchange = restTemplate.exchange(
+            "http://localhost:9091/project/no/" + projectNo,
+            HttpMethod.GET,
+            requestEntity,
+            new ParameterizedTypeReference<String>() {
+            });
+        return exchange.getBody();
     }
 }
