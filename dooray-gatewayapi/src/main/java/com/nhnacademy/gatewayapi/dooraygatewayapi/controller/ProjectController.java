@@ -23,7 +23,7 @@ public class ProjectController {
         Object principal = authentication.getPrincipal();
         String userName = ((User) principal).getUsername();
         List<ProjectDto> projectDtoList = projectService.getOwnProject(userName);
-        model.addAttribute("projectList", projectDtoList);
+        model.addAttribute("projects", projectDtoList);
         return "projectList";
     }
 
@@ -37,6 +37,6 @@ public class ProjectController {
     @PostMapping("/project/register")
     public String projectRegister(@ModelAttribute ProjectDto projectDto) {
         projectService.registerProject(projectDto);
-        return "projectList";
+        return "redirect:/projectList";
     }
 }
