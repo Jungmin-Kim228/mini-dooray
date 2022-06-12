@@ -20,7 +20,7 @@ public class MilestoneAdapterImpl implements MilestoneAdapter {
     private final RestTemplate restTemplate;
 
     @Override
-    public List<MilestoneDto> getMilestoneDtoByProjectNo(Integer projectNo) {
+    public List<MilestoneDto> getMilestoneDtosByProjectNo(Integer projectNo) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));

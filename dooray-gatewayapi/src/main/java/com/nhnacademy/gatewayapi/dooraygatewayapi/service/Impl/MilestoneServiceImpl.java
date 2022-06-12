@@ -14,7 +14,7 @@ public class MilestoneServiceImpl implements MilestoneService {
     private final MilestoneAdapter milestoneAdapter;
 
     @Override
-    public List<MilestoneDto> getMilestoneDtoByProjectNo(Integer projectNo) {
-        return milestoneAdapter.getMilestoneDtoByProjectNo(projectNo);
+    public List<MilestoneDto> getMilestoneDtosByProjectNo(Integer projectNo) {
+        return milestoneAdapter.getMilestoneDtosByProjectNo(projectNo);
     }
 }

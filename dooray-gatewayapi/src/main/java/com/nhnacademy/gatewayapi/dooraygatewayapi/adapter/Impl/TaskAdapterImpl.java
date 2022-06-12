@@ -20,7 +20,7 @@ public class TaskAdapterImpl implements TaskAdapter {
     private final RestTemplate restTemplate;
 
     @Override
-    public List<TaskDto> getTaskDtoByProjectNo(Integer projectNo) {
+    public List<TaskDto> getTaskDtosByProjectNo(Integer projectNo) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));

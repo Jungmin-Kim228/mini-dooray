@@ -56,13 +56,13 @@ public class ProjectController {
 
     @GetMapping("/project/detail/{projectNo}")
     public String projectDetail(@PathVariable("projectNo") Integer projectNo, Model model) {
-        String projectName = projectService.getProjectNameByNo(projectNo);
-        List<TaskDto> taskDtoList = taskService.getTaskDtoByProjectNo(projectNo);
-        List<MilestoneDto> milestoneDtoList = milestoneService.getMilestoneDtoByProjectNo(projectNo);
-        List<TagDto> tagDtoList = tagService.getTagDtoByProjectNo(projectNo);
-        List<ProjectUserDto> projectUserDtoList = projectUserService.getProjectUserDtoByProjectNo(projectNo);
+        ProjectDto projectDto = projectService.getProjectDtoByProjectNo(projectNo);
+        List<TaskDto> taskDtoList = taskService.getTaskDtosByProjectNo(projectNo);
+        List<MilestoneDto> milestoneDtoList = milestoneService.getMilestoneDtosByProjectNo(projectNo);
+        List<TagDto> tagDtoList = tagService.getTagDtosByProjectNo(projectNo);
+        List<ProjectUserDto> projectUserDtoList = projectUserService.getProjectUserDtosByProjectNo(projectNo);
 
-        model.addAttribute("projectName", projectName);
+        model.addAttribute("project", projectDto);
         model.addAttribute("tasks", taskDtoList);
         model.addAttribute("milestones", milestoneDtoList);
         model.addAttribute("tags", tagDtoList);

@@ -14,7 +14,7 @@ public class TagServiceImpl implements TagService {
     private final TagAdapter tagAdapter;
 
     @Override
-    public List<TagDto> getTagDtoByProjectNo(Integer projectNo) {
-        return tagAdapter.getTagDtoByProjectNo(projectNo);
+    public List<TagDto> getTagDtosByProjectNo(Integer projectNo) {
+        return tagAdapter.getTagDtosByProjectNo(projectNo);
     }
 }

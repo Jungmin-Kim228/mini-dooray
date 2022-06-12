@@ -48,17 +48,17 @@ public class ProjectAdapterImpl implements ProjectAdapter {
     }
 
     @Override
-    public String getProjectNameByNo(Integer projectNo) {
+    public ProjectDto getProjectDtoByProjectNo(Integer projectNo) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<String> exchange = restTemplate.exchange(
+        ResponseEntity<ProjectDto> exchange = restTemplate.exchange(
             "http://localhost:9091/project/no/" + projectNo,
             HttpMethod.GET,
             requestEntity,
-            new ParameterizedTypeReference<String>() {
+            new ParameterizedTypeReference<ProjectDto>() {
             });
         return exchange.getBody();
     }

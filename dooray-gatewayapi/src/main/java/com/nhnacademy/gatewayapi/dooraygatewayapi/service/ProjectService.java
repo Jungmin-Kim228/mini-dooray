@@ -10,5 +10,5 @@ public interface ProjectService {
 
     void registerProject(ProjectRequest projectRequest);
 
-    String getProjectNameByNo(Integer projectNo);
+    ProjectDto getProjectDtoByProjectNo(Integer projectNo);
 }

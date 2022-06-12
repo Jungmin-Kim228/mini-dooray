@@ -25,7 +25,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public String getProjectNameByNo(Integer projectNo) {
-        return projectAdapter.getProjectNameByNo(projectNo);
+    public ProjectDto getProjectDtoByProjectNo(Integer projectNo) {
+        return projectAdapter.getProjectDtoByProjectNo(projectNo);
     }
 }

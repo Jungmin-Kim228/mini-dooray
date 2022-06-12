@@ -21,7 +21,7 @@ public class TagAdapterImpl implements TagAdapter {
     private final RestTemplate restTemplate;
 
     @Override
-    public List<TagDto> getTagDtoByProjectNo(Integer projectNo) {
+    public List<TagDto> getTagDtosByProjectNo(Integer projectNo) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));

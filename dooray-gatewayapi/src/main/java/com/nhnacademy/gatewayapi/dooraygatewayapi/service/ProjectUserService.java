@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface ProjectUserService {
 
-    List<ProjectUserDto> getProjectUserDtoByProjectNo(Integer projectNo);
+    List<ProjectUserDto> getProjectUserDtosByProjectNo(Integer projectNo);
 }
