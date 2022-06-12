@@ -23,7 +23,7 @@
     </tr>
 </table><hr/>
 <h4 th:text="마일스톤"></h4>
-<a th:href="@{/milestoneRegister/{projectNo}(projectNo = ${project.projectNo})}">마일스톤추가</a>
+<a th:href="@{/milestone/register/{projectNo}(projectNo = ${project.projectNo})}">마일스톤추가</a>
 <table th:border="1">
     <tr>
         <th>이름</th>
@@ -32,13 +32,13 @@
     <tr th:each="milestone : ${milestones}">
         <td th:text="${milestone.milestoneName}"></td>
         <td>
-            <a th:href="@{/milestoneModify/{milestoneNo}(milestoneNo = ${milestone.milestoneNo})}"><button>수정</button></a>
-            <a th:href="@{/milestoneDelete/{milestoneNo}(milestoneNo = ${milestone.milestoneNo})}"><button>삭제</button></a>
+            <a th:href="@{/milestone/modify/{milestoneNo}(milestoneNo = ${milestone.milestoneNo})}"><button>수정</button></a>
+            <a th:href="@{/milestone/delete/{milestoneNo}(milestoneNo = ${milestone.milestoneNo})}"><button>삭제</button></a>
         </td>
     </tr>
 </table><hr/>
 <h4 th:text="태그"></h4>
-<a th:href="@{/tagRegister/{projectNo}(projectNo = ${project.projectNo})}">태그추가</a>
+<a th:href="@{/tag/register/{projectNo}(projectNo = ${project.projectNo})}">태그추가</a>
 <table th:border="1">
     <tr>
         <th>이름</th>
@@ -47,8 +47,8 @@
     <tr th:each="tag : ${tags}">
         <td th:text="${tag.tagName}"></td>
         <td>
-            <a th:href="@{/tagModify/{tagNo}(tagNo = ${tag.tagNo})}"><button>수정</button></a>
-            <a th:href="@{/tagDelete/{tagNo}(tagNo = ${tag.tagNo})}"><button>삭제</button></a>
+            <a th:href="@{/tag/modify/{tagNo}(tagNo = ${tag.tagNo})}"><button>수정</button></a>
+            <a th:href="@{/tag/delete/{tagNo}(tagNo = ${tag.tagNo})}"><button>삭제</button></a>
         </td>
     </tr>
 </table><hr/>

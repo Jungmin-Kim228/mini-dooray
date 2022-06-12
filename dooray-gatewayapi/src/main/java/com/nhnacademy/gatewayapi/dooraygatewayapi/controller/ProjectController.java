@@ -41,7 +41,7 @@ public class ProjectController {
         return "project/projectList";
     }
 
-    @GetMapping("/projectRegister")
+    @GetMapping("/project/register")
     public String projectRegisterForm(Authentication authentication, Model model) {
         String userName = ((User) authentication.getPrincipal()).getUsername();
         model.addAttribute("userName", userName);
