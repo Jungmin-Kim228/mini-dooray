@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>태스크 추가</title>
+</head>
+<body>
+<h1>태스크 추가</h1><hr/>
+<form action="/task/register" method="post">
+    태스크 제목: <input type="text" name="taskTitle"/>
+    태스크 내용: <input type="text" name="taskContent"/>
+<!--    here 태스크 추가 마무리하기....-->
+<!--    마일스톤: <input type=""-->
+    <input type="hidden" name="projectNo" th:value="${projectNo}"/>
+    <input type="hidden" name="taskRegistrant" th:value="${userName}"/>
+    <input type="submit" value="추가"/>
+</form>
+</body>
+</html>

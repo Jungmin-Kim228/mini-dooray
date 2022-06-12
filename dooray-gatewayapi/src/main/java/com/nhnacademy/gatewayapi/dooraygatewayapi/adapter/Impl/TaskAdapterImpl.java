@@ -34,4 +34,6 @@ public class TaskAdapterImpl implements TaskAdapter {
             });
         return exchange.getBody();
     }
+
+
 }

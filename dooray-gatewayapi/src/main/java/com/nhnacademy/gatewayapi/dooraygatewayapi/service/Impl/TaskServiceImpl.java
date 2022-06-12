@@ -17,4 +17,5 @@ public class TaskServiceImpl implements TaskService {
     public List<TaskDto> getTaskDtosByProjectNo(Integer projectNo) {
         return taskAdapter.getTaskDtosByProjectNo(projectNo);
     }
+
 }

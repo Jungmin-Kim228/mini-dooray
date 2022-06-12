@@ -9,6 +9,7 @@
 <h2 th:text="${project.projectName}"></h2>
 <hr/>
 <h4 th:text="태스크"></h4>
+<a th:href="@{/taskRegister/{projectNo}(projectNo = ${project.projectNo})}">태스크 추가</a>
 <!-- here 편집(추가,,,, 수정,삭제는 상세로 들어가서...?)버튼-->
 <table th:border="1">
     <tr>
@@ -21,6 +22,7 @@
     </tr>
 </table><hr/>
 <h4 th:text="마일스톤"></h4>
+<a th:href="@{/milestoneRegister/{projectNo}(projectNo = ${project.projectNo})}">마일스톤 추가</a>
 <table th:border="1">
     <tr>
         <th>이름</th>
@@ -30,6 +32,7 @@
     </tr>
 </table><hr/>
 <h4 th:text="태그"></h4>
+<a th:href="@{/tagRegister/{projectNo}(projectNo = ${project.projectNo})}">태그 추가</a>
 <table th:border="1">
     <tr>
         <th>이름</th>
@@ -39,6 +42,7 @@
     </tr>
 </table><hr/>
 <h4 th:text="프로젝트멤버"></h4>
+<a th:href="@{/projectUserRegister/{projectNo}(projectNo = ${project.projectNo})}">프로젝트멤버 추가</a>
 <table th:border="1">
     <tr>
         <th>아이디</th>
