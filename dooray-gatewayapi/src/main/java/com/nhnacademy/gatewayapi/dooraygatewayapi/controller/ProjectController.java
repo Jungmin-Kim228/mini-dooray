@@ -51,7 +51,7 @@ public class ProjectController {
     @PostMapping("/project/register")
     public String projectRegister(@ModelAttribute ProjectRequest projectRequest) {
         projectService.registerProject(projectRequest);
-        return "redirect:/project/projectList";
+        return "redirect:/projectList";
     }
 
     @GetMapping("/project/detail/{projectNo}")
@@ -62,6 +62,7 @@ public class ProjectController {
         List<TagDto> tagDtoList = tagService.getTagDtoByProjectNo(projectNo);
         List<ProjectUserDto> projectUserDtoList = projectUserService.getProjectUserDtoByProjectNo(projectNo);
 
+        model.addAttribute("projectName", projectName);
         model.addAttribute("tasks", taskDtoList);
         model.addAttribute("milestones", milestoneDtoList);
         model.addAttribute("tags", tagDtoList);
