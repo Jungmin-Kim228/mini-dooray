@@ -2,6 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.service.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.TagAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.TagService;
 import java.util.List;
@@ -25,7 +26,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public void modifyTag(TagRegisterRequest request) {
-        tagAdapter.modifyTag(request);
+    public Integer modifyTag(TagModifyRequest request) {
+        return tagAdapter.modifyTag(request);
     }
 }

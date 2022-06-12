@@ -1,5 +1,6 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.controller;
 
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.TagService;
 import lombok.RequiredArgsConstructor;
@@ -34,9 +35,9 @@ public class TagController {
         return "tag/tagModifyForm";
     }
 
-//    @PostMapping("tagModify")
-//    public String tagModify(@ModelAttribute TagModifyRequest request) {
-//        tagService.modifyTag(request);
-//        return "redirect:/project/detail/"+request.getProjectNo();
-//    }
+    @PostMapping("tagModify")
+    public String tagModify(@ModelAttribute TagModifyRequest request) {
+        Integer projectNo = tagService.modifyTag(request);
+        return "redirect:/project/detail/"+projectNo;
+    }
 }

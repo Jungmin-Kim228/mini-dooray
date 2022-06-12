@@ -1,10 +1,12 @@
 package com.nhnacademy.taskapi.dooraytaskapi.service.Impl;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TagDto;
+import com.nhnacademy.taskapi.dooraytaskapi.domain.TagModifyRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TagRegisterRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.Project;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.Tag;
 import com.nhnacademy.taskapi.dooraytaskapi.exception.ProjectNotFoundException;
+import com.nhnacademy.taskapi.dooraytaskapi.exception.TagNotFoundException;
 import com.nhnacademy.taskapi.dooraytaskapi.repository.ProjectRepository;
 import com.nhnacademy.taskapi.dooraytaskapi.repository.TagRepository;
 import com.nhnacademy.taskapi.dooraytaskapi.service.TagService;
@@ -33,5 +35,13 @@ public class TagServiceImpl implements TagService {
             .project(project)
             .build();
         tagRepository.save(tag);
+    }
+
+    @Override
+    public Integer modifyTag(TagModifyRequest request) {
+        Tag tag = tagRepository.findById(request.getTagNo()).orElseThrow(TagNotFoundException::new);
+        tag.setTagName(request.getTagName());
+        tagRepository.save(tag);
+        return tag.getProject().getProjectNo();
     }
 }

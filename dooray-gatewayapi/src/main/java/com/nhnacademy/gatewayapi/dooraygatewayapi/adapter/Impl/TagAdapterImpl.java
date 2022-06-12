@@ -2,6 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.TagAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagRegisterRequest;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -48,12 +49,12 @@ public class TagAdapterImpl implements TagAdapter {
     }
 
     @Override
-    public void modifyTag(TagRegisterRequest request) {
-        RequestEntity<TagRegisterRequest> requestEntity = RequestEntity
+    public Integer modifyTag(TagModifyRequest request) {
+        RequestEntity<TagModifyRequest> requestEntity = RequestEntity
             .post("http://localhost:9091/tag/modify")
             .accept(MediaType.APPLICATION_JSON)
             .body(request);
 
-        restTemplate.exchange(requestEntity, new ParameterizedTypeReference<String>() {});
+        return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
     }
 }

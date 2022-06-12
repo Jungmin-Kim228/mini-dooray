@@ -1,6 +1,7 @@
 package com.nhnacademy.taskapi.dooraytaskapi.controller;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TagDto;
+import com.nhnacademy.taskapi.dooraytaskapi.domain.TagModifyRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TagRegisterRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.service.TagService;
 import java.util.List;
@@ -17,15 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/tag")
 public class TagController {
 
-    private final TagService tagServcie;
+    private final TagService tagService;
 
     @GetMapping("/no/{projectNo}")
     public List<TagDto> getTagByProjectNo(@PathVariable("projectNo") Integer no) {
-        return tagServcie.getTagByProjectNo(no);
+        return tagService.getTagByProjectNo(no);
     }
 
     @PostMapping("/register")
     public void registerTag(@RequestBody TagRegisterRequest request) {
-        tagServcie.registerTag(request);
+        tagService.registerTag(request);
+    }
+
+    @PostMapping("/modify")
+    public Integer modifyTag(@RequestBody TagModifyRequest request) {
+        return tagService.modifyTag(request);
     }
 }
