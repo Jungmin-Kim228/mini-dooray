@@ -2,6 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.service.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.TagAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.TagService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -16,5 +17,10 @@ public class TagServiceImpl implements TagService {
     @Override
     public List<TagDto> getTagDtosByProjectNo(Integer projectNo) {
         return tagAdapter.getTagDtosByProjectNo(projectNo);
+    }
+
+    @Override
+    public void registerTag(TagRegisterRequest request) {
+        tagAdapter.registerTag(request);
     }
 }
