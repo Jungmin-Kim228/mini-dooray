@@ -11,8 +11,14 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.InMemoryOAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @EnableWebSecurity(debug = true)
@@ -25,6 +31,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .permitAll()
                 .and()
+//            .oauth2Login()
+//                .clientRegistrationRepository(clientRegistrationRepository())
+//                .authorizedClientService(authorizedClientService())
+//                .loginPage("/login/github")
+//            .and()
             .formLogin()
                 .usernameParameter("id")
                 .passwordParameter("pw")
@@ -66,5 +77,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationSuccessHandler loginSuccessHandler(
         RedisTemplate<String, String> redisTemplate) {
         return new LoginSuccessHandler(redisTemplate);
+    }
+
+    @Bean
+    public ClientRegistrationRepository clientRegistrationRepository() {
+        return new InMemoryClientRegistrationRepository(github());
+    }
+
+    @Bean
+    public OAuth2AuthorizedClientService authorizedClientService() {
+        return new InMemoryOAuth2AuthorizedClientService(clientRegistrationRepository());
+    }
+
+    public ClientRegistration github() {
+        return CommonOAuth2Provider.GITHUB.getBuilder("github")
+                                          .userNameAttributeName("name")
+                                          .clientId("a0f085aa6b989050b75e")
+                                          .clientSecret("4a7864036cc08e84e6bedeffa80cd88a0011ec92")
+                                          .build();
     }
 }
