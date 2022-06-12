@@ -17,27 +17,29 @@ public class MilestoneController {
 
     private final MilestoneService milestoneService;
 
-    @GetMapping("/milestoneRegister/{projectNo}")
+    @GetMapping("/milestone/register/{projectNo}")
     public String milestoneRegisterForm(@PathVariable("projectNo") Integer projectNo, Model model) {
         model.addAttribute("projectNo", projectNo);
         return "milestone/milestoneRegisterForm";
     }
 
-    @PostMapping("/milestoneRegister")
+    @PostMapping("/milestone/register")
     public String milestoneRegister(@ModelAttribute MilestoneRegisterRequest request) {
         milestoneService.registerMilestone(request);
         return "redirect:/project/detail/"+request.getProjectNo();
     }
 
-    @GetMapping("/milestoneModify/{milestoneNo}")
+    @GetMapping("/milestone/modify/{milestoneNo}")
     public String milestoneModifyForm(@PathVariable("milestoneNo") Integer milestoneNo, Model model) {
         model.addAttribute("milestoneNo", milestoneNo);
         return "milestone/milestoneModifyForm";
     }
 
-    @PostMapping("/milestoneModify")
+    @PostMapping("/milestone/modify")
     public String milestoneModify(@ModelAttribute MilestoneModifyRequest request) {
         Integer projectNo = milestoneService.modifyMilestone(request);
         return "redirect:/project/detail/"+projectNo;
     }
+
+//    @GetMapping("/milestone/delete")
 }

@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>태그 추가</h1><hr/>
-<form action="/tagRegister" method="post">
+<form action="/tag/register" method="post">
     이름: <input type="text" name="tagName"/>
     <input type="hidden" name="projectNo" th:value="${projectNo}"/>
     <input type="submit" value="추가"/>
