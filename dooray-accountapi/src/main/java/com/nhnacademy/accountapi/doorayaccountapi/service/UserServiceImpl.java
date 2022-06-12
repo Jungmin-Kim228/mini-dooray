@@ -28,6 +28,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUser(String id) {
-        return userRepository.getUserDtoByUserId(id);
+        return userRepository.findByUserId(id);
     }
 }
