@@ -5,9 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProjectDto {
-
-    private Integer projectNo;
+public class ProjectRequest {
 
     private String projectName;
 

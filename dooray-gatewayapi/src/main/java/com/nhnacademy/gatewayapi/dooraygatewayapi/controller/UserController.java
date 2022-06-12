@@ -17,7 +17,7 @@ public class UserController {
 
     @GetMapping("/userRegister")
     public String userRegister() {
-        return "userRegister";
+        return "user/userRegister";
     }
 
     @PostMapping("/user/register")
@@ -25,6 +25,6 @@ public class UserController {
                                Model model) {
         String userId = userService.registerUser(userDto);
         model.addAttribute("userId", userId);
-        return "userRegisterSuccess";
+        return "user/userRegisterSuccess";
     }
 }
