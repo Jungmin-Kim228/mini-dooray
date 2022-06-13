@@ -2,6 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.ProjectUserAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserAddRequest;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDeleteRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserIdOnlyDto;
@@ -63,5 +64,15 @@ public class ProjectUserAdapterImpl implements ProjectUserAdapter {
             .body(request);
 
         restTemplate.exchange(requestEntity, new ParameterizedTypeReference<String>() {});
+    }
+
+    @Override
+    public void deleteProjectUser(ProjectUserDeleteRequest request) {
+        RequestEntity<ProjectUserDeleteRequest> requestEntity = RequestEntity
+            .post("http://localhost:9091/projectUser/delete")
+            .accept(MediaType.APPLICATION_JSON)
+            .body(request);
+
+        restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
     }
 }

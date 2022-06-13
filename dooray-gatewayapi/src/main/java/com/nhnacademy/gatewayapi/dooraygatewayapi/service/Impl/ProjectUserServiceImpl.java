@@ -2,6 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.service.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.ProjectUserAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserAddRequest;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDeleteRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserIdOnlyDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.ProjectUserService;
@@ -32,5 +33,10 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     @Override
     public void addProjectUser(ProjectUserAddRequest request) {
         projectUserAdapter.addProjectUser(request);
+    }
+
+    @Override
+    public void deleteProjectUser(ProjectUserDeleteRequest request) {
+        projectUserAdapter.deleteProjectUser(request);
     }
 }

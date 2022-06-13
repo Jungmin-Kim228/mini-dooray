@@ -57,9 +57,13 @@
 <table th:border="1">
     <tr>
         <th>아이디</th>
+        <th>편집</th>
     </tr>
     <tr th:each="member : ${members}">
         <td th:text="${member.userId}"></td>
+        <td>
+            <a th:href="@{/projectUser/delete/{userId}/{projectNo}(userId = ${member.userId}, projectNo = ${project.projectNo})}"><button>삭제</button></a>
+        </td>
     </tr>
 </table>
 </body>

@@ -1,6 +1,7 @@
 package com.nhnacademy.taskapi.dooraytaskapi.controller;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectUserAddRequest;
+import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectUserDeleteRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectUserDto;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.UserIdOnlyDto;
 import com.nhnacademy.taskapi.dooraytaskapi.service.ProjectUserService;
@@ -33,5 +34,10 @@ public class ProjectUserController {
     @PostMapping("/add")
     public void addProjectUser(@RequestBody ProjectUserAddRequest request) {
         projectUserService.addProjectUser(request);
+    }
+
+    @PostMapping("/delete")
+    public void deleteProjectUser(@RequestBody ProjectUserDeleteRequest request) {
+        projectUserService.deleteProjectUser(request);
     }
 }
