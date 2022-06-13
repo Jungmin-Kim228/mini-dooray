@@ -3,6 +3,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.controller;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.MilestoneService;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.TagService;
@@ -60,5 +61,24 @@ public class TaskController {
         model.addAttribute("milestone", milestoneDto);
         model.addAttribute("tags", tagDtos);
         return "task/taskDetail";
+    }
+
+    @GetMapping("/task/modify/{taskNo}/{projectNo}")
+    public String taskModify(@PathVariable("taskNo") Integer taskNo,
+                             @PathVariable("projectNo") Integer projectNo,
+                             Authentication authentication, Model model) {
+        String userName = ((User) authentication.getPrincipal()).getUsername();
+        TaskDto task = taskService.getTaskDtoByTaskNo(taskNo);
+
+        if (!userName.equals(task.getTaskRegistrant())) {
+            return "redirect:/task/detail/"+taskNo+"/"+projectNo;
+        }
+
+        List<MilestoneDto> milestones = milestoneService.getMilestoneDtosByProjectNo(projectNo);
+        List<TagDto> tags = tagService.getTagDtosByProjectNo(projectNo);
+        model.addAttribute("milestones", milestones);
+        model.addAttribute("tags", tags);
+        model.addAttribute("item", new TaskModifyRequest());
+        return "task/taskModifyForm";
     }
 }

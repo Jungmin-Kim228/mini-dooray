@@ -8,6 +8,7 @@
 <h1>태스크 상세</h1>
 <h2 th:text="${task.taskTitle}"></h2>
 <a th:href="@{/project/detail/{projectNo}(projectNo = ${projectNo})}" th:text="이전으로"></a>
+<a th:href="@{/task/modify/{taskNo}/{projectNo}(taskNo = ${task.taskNo}, projectNo = ${projectNo})}" th:text="수정"></a>
 <hr/>
 <table border="1">
     <tr>
