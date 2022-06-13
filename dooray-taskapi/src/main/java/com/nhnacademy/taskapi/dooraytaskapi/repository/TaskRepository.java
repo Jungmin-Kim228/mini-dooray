@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface TaskRepository extends JpaRepository<Task, Integer>, TaskRepositoryCustom {
 
     List<Task> findTasksByMilestone_MilestoneNo(Integer milestoneNo);
+
 }

@@ -36,8 +36,8 @@ public class TagController {
     }
 
     @PostMapping("/delete")
-    public Integer deleteTag(@RequestBody Integer request) {
-        return tagService.deleteTag(request);
+    public Integer deleteTag(@RequestBody Integer tagNo) {
+        return tagService.deleteTag(tagNo);
     }
 
     @GetMapping("/taskNo/{taskNo}")

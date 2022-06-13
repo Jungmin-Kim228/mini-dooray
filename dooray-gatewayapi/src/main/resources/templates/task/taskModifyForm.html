@@ -8,8 +8,8 @@
 <h1>태스크 수정</h1><hr/>
 <form action="/task/modify" method="post" th:object="${item}">
   <input type="hidden" name="taskNo" th:value="${taskNo}"/>
-  태스크 제목: <input type="text" name="taskTitle"/><br/>
-  태스크 내용: <input type="text" name="taskContent"/><br/>
+  태스크 제목: <input type="text" placeholder="미입력시 기존 내용 적용" name="taskTitle"/><br/>
+  태스크 내용: <input type="text" placeholder="미입력시 기존 내용 적용" name="taskContent"/><br/>
   마일스톤:
   <input th:each="milestone : ${milestones}" type="radio" th:name="milestoneNo" th:value="${milestone.milestoneNo}" th:text="${milestone.milestoneName}">
   <input type="radio" th:name="milestoneNo" th:value="0" th:text="없음"><br/>

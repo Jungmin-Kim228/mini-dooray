@@ -20,6 +20,7 @@ import com.nhnacademy.taskapi.dooraytaskapi.repository.TaskTagRepository;
 import com.nhnacademy.taskapi.dooraytaskapi.service.TaskService;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -46,7 +47,7 @@ public class TaskServiceImpl implements TaskService {
         Project project = projectRepository.findById(request.getProjectNo()).orElseThrow(
             ProjectNotFoundException::new);
         Milestone milestone = null;
-        if (request.getMilestoneNo() != 0) {
+        if (Objects.nonNull(request.getMilestoneNo()) && request.getMilestoneNo() != 0) {
             milestone = milestoneRepository.findById(request.getMilestoneNo()).orElseThrow(MilestoneNotFoundException::new);
         }
         Task task = Task.addTask()
@@ -58,13 +59,15 @@ public class TaskServiceImpl implements TaskService {
             .build();
         taskRepository.save(task);
 
-        for (Integer tagNo : request.getTagNoList()) {
-            Tag tag = tagRepository.findById(tagNo).orElseThrow(TagNotFoundException::new);
-            TaskTag taskTag = TaskTag.addTaskTag()
-                .task(task)
-                .tag(tag)
-                .build();
-            taskTagRepository.save(taskTag);
+        if (Objects.nonNull(request.getTagNoList())) {
+            for (Integer tagNo : request.getTagNoList()) {
+                Tag tag = tagRepository.findById(tagNo).orElseThrow(TagNotFoundException::new);
+                TaskTag taskTag = TaskTag.addTaskTag()
+                                         .task(task)
+                                         .tag(tag)
+                                         .build();
+                taskTagRepository.save(taskTag);
+            }
         }
     }
 
@@ -79,8 +82,12 @@ public class TaskServiceImpl implements TaskService {
         Task task = taskRepository.findById(request.getTaskNo()).orElseThrow(TaskNotFoundException::new);
         Milestone milestone = milestoneRepository.findById(request.getMilestoneNo()).orElse(null);
 
-        task.setTaskTitle(request.getTaskTitle());
-        task.setTaskContent(request.getTaskContent());
+        if (!request.getTaskTitle().isBlank()) {
+            task.setTaskTitle(request.getTaskTitle());
+        }
+        if (!request.getTaskContent().isBlank()) {
+            task.setTaskContent(request.getTaskContent());
+        }
         task.setMilestone(milestone);
         taskRepository.save(task);
 

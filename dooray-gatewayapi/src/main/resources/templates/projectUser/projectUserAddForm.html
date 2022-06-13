@@ -8,11 +8,12 @@
 <h1>프로젝트 멤버 추가</h1><hr/>
 <form action="/projectUser/add" method="post">
     <div th:each="user : ${userIds}">
-        <input type="checkbox" th:field="*{userIdList}" th:value="${user.userId}">
+        <input type="checkbox" th:name="userIdList" th:value="${user.userId}">
         <label th:text="${user.userId}"></label>
     </div>
     <input type="hidden" name="projectNo" th:value="${projectNo}"/>
     <input type="submit" value="추가"/>
-</form>
+</form><br/>
+<a th:href="@{/project/detail/{projectNo}(projectNo = ${projectNo})}">이전으로</a>
 </body>
 </html>

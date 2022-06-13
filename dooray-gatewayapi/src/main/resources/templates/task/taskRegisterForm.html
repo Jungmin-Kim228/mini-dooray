@@ -16,7 +16,7 @@
     <div th:each="tag : ${tags}">
         <input type="checkbox" th:field="*{tagNoList}" th:value="${tag.tagNo}">
         <label th:text="${tag.tagName}"></label>
-    </div>
+    </div><br/>
     <input type="hidden" name="projectNo" th:value="${projectNo}"/>
     <input type="hidden" name="taskRegistrant" th:value="${userName}"/>
     <input type="submit" value="추가"/>

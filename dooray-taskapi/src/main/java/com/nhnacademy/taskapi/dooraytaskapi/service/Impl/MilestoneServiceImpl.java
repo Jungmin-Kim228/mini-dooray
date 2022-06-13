@@ -48,12 +48,6 @@ public class MilestoneServiceImpl implements MilestoneService {
             MilestoneNotFoundException::new);
         milestone.setMilestoneName(request.getMilestoneName());
         milestoneRepository.save(milestone);
-
-        List<Task> tasks = taskRepository.findTasksByMilestone_MilestoneNo(milestone.getMilestoneNo());
-        for (Task task : tasks) {
-            task.setMilestone(milestone);
-            taskRepository.save(task);
-        }
         return milestone.getProject().getProjectNo();
     }
 

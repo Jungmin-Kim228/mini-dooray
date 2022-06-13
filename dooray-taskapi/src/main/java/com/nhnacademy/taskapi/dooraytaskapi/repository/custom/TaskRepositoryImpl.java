@@ -3,6 +3,7 @@ package com.nhnacademy.taskapi.dooraytaskapi.repository.custom;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TaskDto;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.QProject;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.QTask;
+import com.nhnacademy.taskapi.dooraytaskapi.entity.QTaskTag;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.Task;
 import com.querydsl.core.types.Projections;
 import java.util.List;
@@ -41,5 +42,17 @@ public class TaskRepositoryImpl extends QuerydslRepositorySupport implements Tas
                 task.taskRegistrant,
                 task.taskContent))
             .fetchOne();
+    }
+
+    @Override
+    public List<Task> findTasksByTagNo(Integer tagNo) {
+        QTask task = QTask.task;
+        QTaskTag taskTag = QTaskTag.taskTag;
+
+        return from(task)
+            .innerJoin(taskTag).on(task.taskNo.eq(taskTag.pk.taskNo))
+            .where(taskTag.pk.tagNo.eq(tagNo))
+            .select(task)
+            .fetch();
     }
 }

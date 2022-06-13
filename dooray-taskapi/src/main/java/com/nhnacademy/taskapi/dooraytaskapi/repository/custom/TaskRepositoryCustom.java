@@ -1,6 +1,7 @@
 package com.nhnacademy.taskapi.dooraytaskapi.repository.custom;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TaskDto;
+import com.nhnacademy.taskapi.dooraytaskapi.entity.Task;
 import java.util.List;
 import org.springframework.data.repository.NoRepositoryBean;
 
@@ -11,4 +12,5 @@ public interface TaskRepositoryCustom {
 
     TaskDto getTaskDtoByTaskNo(Integer no);
 
+    List<Task> findTasksByTagNo(Integer tagNo);
 }
