@@ -64,7 +64,7 @@ public class TaskController {
     }
 
     @GetMapping("/task/modify/{taskNo}/{projectNo}")
-    public String taskModify(@PathVariable("taskNo") Integer taskNo,
+    public String taskModifyForm(@PathVariable("taskNo") Integer taskNo,
                              @PathVariable("projectNo") Integer projectNo,
                              Authentication authentication, Model model) {
         String userName = ((User) authentication.getPrincipal()).getUsername();
@@ -76,9 +76,17 @@ public class TaskController {
 
         List<MilestoneDto> milestones = milestoneService.getMilestoneDtosByProjectNo(projectNo);
         List<TagDto> tags = tagService.getTagDtosByProjectNo(projectNo);
+        model.addAttribute("taskNo", taskNo);
         model.addAttribute("milestones", milestones);
         model.addAttribute("tags", tags);
         model.addAttribute("item", new TaskModifyRequest());
         return "task/taskModifyForm";
+    }
+
+    @PostMapping("/task/modify")
+    public String taskModify(@ModelAttribute TaskModifyRequest request) {
+        taskService.modifyTask(request);
+
+        // here 
     }
 }

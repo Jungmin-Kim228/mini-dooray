@@ -8,6 +8,8 @@ import lombok.Setter;
 @Setter
 public class TaskModifyRequest {
 
+    private Integer taskNo;
+
     private String taskTitle;
 
     private String taskContent;
