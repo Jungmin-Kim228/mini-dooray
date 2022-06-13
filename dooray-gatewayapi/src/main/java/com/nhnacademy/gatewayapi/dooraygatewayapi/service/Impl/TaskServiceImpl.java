@@ -34,4 +34,9 @@ public class TaskServiceImpl implements TaskService {
     public Integer modifyTask(TaskModifyRequest request) {
         return taskAdapter.modifyTask(request);
     }
+
+    @Override
+    public Integer deleteTask(Integer taskNo) {
+        return taskAdapter.deleteTask(taskNo);
+    }
 }

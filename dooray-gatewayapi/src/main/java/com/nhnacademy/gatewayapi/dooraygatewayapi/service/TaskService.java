@@ -14,4 +14,6 @@ public interface TaskService {
     TaskDto getTaskDtoByTaskNo(Integer taskNo);
 
     Integer modifyTask(TaskModifyRequest request);
+
+    Integer deleteTask(Integer taskNo);
 }

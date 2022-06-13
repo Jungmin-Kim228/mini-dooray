@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +35,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     }
 
     @Override
+    @Transactional
     public void addProjectUser(ProjectUserAddRequest request) {
         Project project = projectRepository.findById(request.getProjectNo()).orElseThrow(
             ProjectNotFoundException::new);
@@ -48,6 +50,7 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     }
 
     @Override
+    @Transactional
     public void deleteProjectUser(ProjectUserDeleteRequest request) {
         ProjectUser projectUser = projectUserRepository.findById(new ProjectUser.Pk(
             request.getUserId(), request.getProjectNo())).orElseThrow(ProjectUserNotFoundException::new);

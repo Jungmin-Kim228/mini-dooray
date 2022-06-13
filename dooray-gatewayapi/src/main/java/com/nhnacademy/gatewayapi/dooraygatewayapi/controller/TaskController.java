@@ -88,4 +88,10 @@ public class TaskController {
         Integer projectNo = taskService.modifyTask(request);
         return "redirect:/task/detail/"+request.getTaskNo()+"/"+projectNo;
     }
+
+    @GetMapping("/task/delete/{taskNo}")
+    public String taskDelete(@PathVariable("taskNo") Integer taskNo) {
+        Integer projectNo = taskService.deleteTask(taskNo);
+        return "redirect:/project/detail/"+projectNo;
+    }
 }

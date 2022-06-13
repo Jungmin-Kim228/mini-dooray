@@ -39,4 +39,9 @@ public class TaskController {
     public Integer modifyTask(@RequestBody TaskModifyRequest request) {
         return taskService.modifyTask(request);
     }
+
+    @PostMapping("/delete")
+    public Integer deleteTask(@RequestBody Integer taskNo) {
+        return taskService.deleteTask(taskNo);
+    }
 }

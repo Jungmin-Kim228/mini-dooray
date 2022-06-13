@@ -10,6 +10,7 @@ import com.nhnacademy.taskapi.dooraytaskapi.service.ProjectService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +25,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    @Transactional
     public void registerProject(ProjectRegisterRequest request) {
         Project project = Project.addProject()
                                  .name(request.getProjectName())

@@ -13,6 +13,7 @@ import com.nhnacademy.taskapi.dooraytaskapi.service.MilestoneService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +28,7 @@ public class MilestoneServiceImpl implements MilestoneService {
     }
 
     @Override
+    @Transactional
     public void registerMilestone(MilestoneRegisterRequest request) {
         Project project = projectRepository.findById(request.getProjectNo()).orElseThrow(ProjectNotFoundException::new);
         Milestone milestone = Milestone.addMilestone()
@@ -37,6 +39,7 @@ public class MilestoneServiceImpl implements MilestoneService {
     }
 
     @Override
+    @Transactional
     public Integer modifyMilestone(MilestoneModifyRequest request) {
         Milestone milestone = milestoneRepository.findById(request.getMilestoneNo()).orElseThrow(
             MilestoneNotFoundException::new);
@@ -46,6 +49,7 @@ public class MilestoneServiceImpl implements MilestoneService {
     }
 
     @Override
+    @Transactional
     public Integer deleteMilestone(Integer request) {
         Milestone milestone = milestoneRepository.findById(request).orElseThrow(MilestoneNotFoundException::new);
         Integer projectNo = milestone.getProject().getProjectNo();

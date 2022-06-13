@@ -13,6 +13,7 @@ import com.nhnacademy.taskapi.dooraytaskapi.service.TagService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +28,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    @Transactional
     public void registerTag(TagRegisterRequest request) {
         Project project = projectRepository.findById(request.getProjectNo()).orElseThrow(
             ProjectNotFoundException::new);
@@ -38,6 +40,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    @Transactional
     public Integer modifyTag(TagModifyRequest request) {
         Tag tag = tagRepository.findById(request.getTagNo()).orElseThrow(TagNotFoundException::new);
         tag.setTagName(request.getTagName());
@@ -46,6 +49,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    @Transactional
     public Integer deleteTag(Integer request) {
         Tag tag = tagRepository.findById(request).orElseThrow(TagNotFoundException::new);
         Integer projectNo = tag.getProject().getProjectNo();

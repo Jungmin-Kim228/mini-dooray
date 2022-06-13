@@ -74,4 +74,14 @@ public class TaskAdapterImpl implements TaskAdapter {
 
         return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
     }
+
+    @Override
+    public Integer deleteTask(Integer taskNo) {
+        RequestEntity<Integer> requestEntity = RequestEntity
+            .post("http://localhost:9091/task/delete")
+            .accept(MediaType.APPLICATION_JSON)
+            .body(taskNo);
+
+        return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
+    }
 }

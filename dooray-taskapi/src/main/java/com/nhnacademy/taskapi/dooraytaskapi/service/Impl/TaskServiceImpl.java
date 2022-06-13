@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -40,6 +41,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    @Transactional
     public void registerTask(TaskRegisterRequest request) {
         Project project = projectRepository.findById(request.getProjectNo()).orElseThrow(
             ProjectNotFoundException::new);
@@ -72,6 +74,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    @Transactional
     public Integer modifyTask(TaskModifyRequest request) {
         Task task = taskRepository.findById(request.getTaskNo()).orElseThrow(TaskNotFoundException::new);
         Milestone milestone = milestoneRepository.findById(request.getMilestoneNo()).orElse(null);
@@ -82,9 +85,7 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.save(task);
 
         List<TaskTag> taskTags = taskTagRepository.findTaskTagsByPk_TaskNo(task.getTaskNo());
-        for (TaskTag taskTag : taskTags) {
-            taskTagRepository.delete(taskTag);
-        }
+        taskTagRepository.deleteAll(taskTags);
 
         for (Integer tagNo : request.getTagNoList()) {
             Optional<TaskTag>
@@ -99,5 +100,15 @@ public class TaskServiceImpl implements TaskService {
             }
         }
         return task.getProject().getProjectNo();
+    }
+
+    @Override
+    @Transactional
+    public Integer deleteTask(Integer taskNo) {
+        Task task = taskRepository.findById(taskNo).orElseThrow(TaskNotFoundException::new);
+        Integer projectNo = task.getProject().getProjectNo();
+        taskTagRepository.deleteTaskTagsByPk_TaskNo(taskNo);
+        taskRepository.delete(task);
+        return projectNo;
     }
 }
