@@ -59,7 +59,7 @@ public class TagServiceImpl implements TagService {
 
         List<TaskTag> taskTags = taskTagRepository.findTaskTagsByPk_TagNo(tag.getTagNo());
         taskTagRepository.deleteAll(taskTags);
-        
+
         tagRepository.delete(tag);
         return projectNo;
     }

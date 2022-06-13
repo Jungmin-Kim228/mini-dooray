@@ -1,5 +1,6 @@
 package com.nhnacademy.taskapi.dooraytaskapi.controller;
 
+import com.nhnacademy.taskapi.dooraytaskapi.domain.DeleteRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TagDto;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TagModifyRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TagRegisterRequest;
@@ -36,8 +37,8 @@ public class TagController {
     }
 
     @PostMapping("/delete")
-    public Integer deleteTag(@RequestBody Integer tagNo) {
-        return tagService.deleteTag(tagNo);
+    public Integer deleteTag(@RequestBody DeleteRequest request) {
+        return tagService.deleteTag(request.getNo());
     }
 
     @GetMapping("/taskNo/{taskNo}")

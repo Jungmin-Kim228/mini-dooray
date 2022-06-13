@@ -1,6 +1,7 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.MilestoneAdapter;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.DeleteRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneRegisterRequest;
@@ -60,10 +61,10 @@ public class MilestoneAdapterImpl implements MilestoneAdapter {
 
     @Override
     public Integer deleteMilestone(Integer milestoneNo) {
-        RequestEntity<Integer> requestEntity = RequestEntity
+        RequestEntity<DeleteRequest> requestEntity = RequestEntity
             .post("http://localhost:9091/milestone/delete")
             .accept(MediaType.APPLICATION_JSON)
-            .body(milestoneNo);
+            .body(new DeleteRequest(milestoneNo));
 
         return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
     }

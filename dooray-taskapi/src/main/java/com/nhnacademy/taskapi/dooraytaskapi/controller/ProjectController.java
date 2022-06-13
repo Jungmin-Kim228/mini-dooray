@@ -28,8 +28,9 @@ public class ProjectController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public void registerProject(@RequestBody ProjectRegisterRequest request) {
+    public String registerProject(@RequestBody ProjectRegisterRequest request) {
         projectService.registerProject(request);
+        return "project register success";
     }
 
     @GetMapping("/no/{projectNo}")

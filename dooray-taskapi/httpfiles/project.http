@@ -1,0 +1,20 @@
+###
+GET /project/user1
+Host: localhost:9091
+Content-Type: application/json
+
+###
+POST /project/register
+Host: localhost:9091
+Content-Type: application/json
+
+{
+  "projectName": "프로젝트 rest register",
+  "adminId": "user1",
+  "projectStatus": "활성"
+}
+
+###
+GET /project/no/1
+Host: localhost:9091
+Content-Type: application/json

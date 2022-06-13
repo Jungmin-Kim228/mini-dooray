@@ -1,6 +1,7 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.TagAdapter;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.DeleteRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagRegisterRequest;
@@ -60,10 +61,10 @@ public class TagAdapterImpl implements TagAdapter {
 
     @Override
     public Integer deleteTag(Integer tagNo) {
-        RequestEntity<Integer> requestEntity = RequestEntity
+        RequestEntity<DeleteRequest> requestEntity = RequestEntity
             .post("http://localhost:9091/tag/delete")
             .accept(MediaType.APPLICATION_JSON)
-            .body(tagNo);
+            .body(new DeleteRequest(tagNo));
 
         return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
     }

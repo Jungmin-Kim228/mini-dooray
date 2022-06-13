@@ -1,0 +1,33 @@
+###
+GET /milestone/projectNo/1
+Host: localhost:9091
+Accept: application/json
+
+###
+POST /milestone/register
+Host: localhost:9091
+Content-Type: application/json
+
+{
+  "projectNo": 1,
+  "milestoneName": "프로젝트1 마일스톤 rest register"
+}
+
+###
+POST /milestone/modify
+Host: localhost:9091
+Content-Type: application/json
+
+{
+  "milestoneNo": 8,
+  "milestoneName": "프로젝트1 마일스톤 rest modify"
+}
+
+###
+POST /milestone/delete
+Host: localhost:9091
+Content-Type: application/json
+
+{
+  "no" : 8
+}
