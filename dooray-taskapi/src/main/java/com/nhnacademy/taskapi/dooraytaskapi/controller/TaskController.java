@@ -1,5 +1,6 @@
 package com.nhnacademy.taskapi.dooraytaskapi.controller;
 
+import com.nhnacademy.taskapi.dooraytaskapi.domain.DeleteRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TaskDto;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TaskModifyRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TaskRegisterRequest;
@@ -26,8 +27,9 @@ public class TaskController {
     }
 
     @PostMapping("/register")
-    public void registerTask(@RequestBody TaskRegisterRequest request) {
+    public String registerTask(@RequestBody TaskRegisterRequest request) {
         taskService.registerTask(request);
+        return "task register success";
     }
 
     @GetMapping("/taskNo/{taskNo}")
@@ -41,7 +43,7 @@ public class TaskController {
     }
 
     @PostMapping("/delete")
-    public Integer deleteTask(@RequestBody Integer taskNo) {
-        return taskService.deleteTask(taskNo);
+    public Integer deleteTask(@RequestBody DeleteRequest request) {
+        return taskService.deleteTask(request.getNo());
     }
 }

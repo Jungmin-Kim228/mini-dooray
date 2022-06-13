@@ -60,7 +60,7 @@
     </tr>
 </table><hr/>
 <h4 th:text="프로젝트멤버"></h4>
-<a th:href="@{/projectUser/add/{projectNo}(projectNo = ${project.projectNo})}">멤버추가</a>
+<a th:href="@{/projectUser/add/{projectNo}/{adminId}(projectNo = ${project.projectNo}, adminId = ${project.adminId})}">멤버추가</a>
 <table th:border="1">
     <tr>
         <th>아이디</th>

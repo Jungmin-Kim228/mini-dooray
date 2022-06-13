@@ -1,6 +1,7 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.TaskAdapter;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.DeleteRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskModifyRequest;
@@ -77,10 +78,10 @@ public class TaskAdapterImpl implements TaskAdapter {
 
     @Override
     public Integer deleteTask(Integer taskNo) {
-        RequestEntity<Integer> requestEntity = RequestEntity
+        RequestEntity<DeleteRequest> requestEntity = RequestEntity
             .post("http://localhost:9091/task/delete")
             .accept(MediaType.APPLICATION_JSON)
-            .body(taskNo);
+            .body(new DeleteRequest(taskNo));
 
         return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
     }

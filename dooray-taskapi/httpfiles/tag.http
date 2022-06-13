@@ -1,0 +1,38 @@
+###
+GET /tag/projectNo/1
+Host: localhost:9091
+Content-Type: application/json
+
+###
+POST /tag/register
+Host: localhost:9091
+Content-Type: application/json
+
+{
+  "tagName": "프로젝트1 태그 rest register",
+  "projectNo": 1
+}
+
+###
+POST /tag/modify
+Host: localhost:9091
+Content-Type: application/json
+
+{
+  "tagNo": 5,
+  "tagName": "프로젝트1 태그 rest modify"
+}
+
+###
+POST /tag/delete
+Host: localhost:9091
+Content-Type: application/json
+
+{
+  "no": 5
+}
+
+###
+GET /tag/taskNo/1
+Host: localhost:9091
+Content-Type: application/json

@@ -1,0 +1,47 @@
+###
+GET /task/projectNo/1
+Host: localhost:9091
+Content-Type: application/json
+
+###
+POST /task/register
+Host: localhost:9091
+Content-Type: application/json
+
+{
+  "taskTitle": "태스크 rest register",
+  "taskContent": "태스크내용 rest register",
+  "milestoneNo": null,
+  "tagNoList": [3, 4],
+  "projectNo": 1,
+  "taskRegistrant": "user2"
+}
+
+###
+GET /task/taskNo/5
+Host: localhost:9091
+Content-Type: application/json
+
+###
+POST /task/modify
+Host: localhost:9091
+Content-Type: application/json
+
+{
+  "taskNo": 5,
+  "taskTitle": "태스크 rest modify",
+  "taskContent": "태스크내용 rest modify",
+  "milestoneNo": 2,
+  "tagNoList": [1,2,4]
+}
+
+###
+POST /task/delete
+Host: localhost:9091
+Content-Type: application/json
+
+{
+  "no": 5
+}
+
+

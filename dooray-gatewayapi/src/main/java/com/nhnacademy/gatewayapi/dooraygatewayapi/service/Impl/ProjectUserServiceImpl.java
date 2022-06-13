@@ -4,7 +4,6 @@ import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.ProjectUserAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserAddRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDeleteRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDto;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserIdOnlyDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.ProjectUserService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

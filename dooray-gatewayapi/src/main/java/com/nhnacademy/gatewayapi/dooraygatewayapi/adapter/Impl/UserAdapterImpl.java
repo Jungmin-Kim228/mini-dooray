@@ -3,7 +3,6 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.UserAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserDto;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserIdOnlyDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
@@ -21,22 +20,6 @@ import org.springframework.web.client.RestTemplate;
 public class UserAdapterImpl implements UserAdapter {
 
     private final RestTemplate restTemplate;
-
-//    @Override
-//    public List<UserDTO> getUserDTOS() {
-//        HttpHeaders httpHeaders = new HttpHeaders();
-//        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-//        httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
-//
-//        HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
-//        ResponseEntity<List<UserDTO>> exchange = restTemplate.exchange("http://localhost:9090/users",
-//            HttpMethod.GET,
-//            requestEntity,
-//            new ParameterizedTypeReference<List<UserDTO>>() {
-//            });
-//        return exchange.getBody();
-//    }
-
 
     @Override
     public String registerUser(UserDto userDto) {

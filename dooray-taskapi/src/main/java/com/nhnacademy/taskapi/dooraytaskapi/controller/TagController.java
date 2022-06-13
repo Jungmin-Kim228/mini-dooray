@@ -27,8 +27,9 @@ public class TagController {
     }
 
     @PostMapping("/register")
-    public void registerTag(@RequestBody TagRegisterRequest request) {
+    public String registerTag(@RequestBody TagRegisterRequest request) {
         tagService.registerTag(request);
+        return "tag register success";
     }
 
     @PostMapping("/modify")

@@ -4,8 +4,6 @@ import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.ProjectUserAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserAddRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDeleteRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDto;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserIdOnlyDto;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;

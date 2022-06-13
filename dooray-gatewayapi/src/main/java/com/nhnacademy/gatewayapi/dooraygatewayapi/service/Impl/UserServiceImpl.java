@@ -3,7 +3,6 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.service.Impl;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.UserAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserDto;
-import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserIdOnlyDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.UserService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
