@@ -10,7 +10,7 @@ public interface ProjectUserService {
 
     List<ProjectUserDto> getProjectUserDtosByProjectNo(Integer projectNo);
 
-    List<UserIdOnlyDto> excludeMember(List<UserIdOnlyDto> allUserIds, Integer projectNo);
+    List<ProjectUserDto> excludeMember(List<ProjectUserDto> allUserIds, Integer projectNo);
 
     void addProjectUser(ProjectUserAddRequest request);
 

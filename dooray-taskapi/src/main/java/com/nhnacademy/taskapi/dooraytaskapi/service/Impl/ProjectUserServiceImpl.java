@@ -3,7 +3,6 @@ package com.nhnacademy.taskapi.dooraytaskapi.service.Impl;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectUserAddRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectUserDeleteRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectUserDto;
-import com.nhnacademy.taskapi.dooraytaskapi.domain.UserIdOnlyDto;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.Project;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.ProjectUser;
 import com.nhnacademy.taskapi.dooraytaskapi.exception.ProjectNotFoundException;
@@ -27,11 +26,6 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     @Override
     public List<ProjectUserDto> getProjectUserByProjectNo(Integer no) {
         return projectUserRepository.getProjectUserByProjectNo(no);
-    }
-
-    @Override
-    public List<UserIdOnlyDto> getProjectUserIdByProjectNo(Integer no) {
-        return projectUserRepository.getProjectUserIdsByProjectNo(no);
     }
 
     @Override

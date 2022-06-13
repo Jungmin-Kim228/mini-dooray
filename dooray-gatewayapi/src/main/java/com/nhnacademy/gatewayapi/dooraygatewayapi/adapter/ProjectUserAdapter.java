@@ -10,8 +10,6 @@ public interface ProjectUserAdapter {
 
     List<ProjectUserDto> getProjectUserDtosByProjectNo(Integer projectNo);
 
-    List<UserIdOnlyDto> getProjectUserId(Integer projectNo);
-
     void addProjectUser(ProjectUserAddRequest request);
 
     void deleteProjectUser(ProjectUserDeleteRequest request);

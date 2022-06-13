@@ -1,6 +1,7 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.UserAdapter;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserIdOnlyDto;
 import java.util.List;
@@ -67,16 +68,16 @@ public class UserAdapterImpl implements UserAdapter {
     }
 
     @Override
-    public List<UserIdOnlyDto> getAllUserId() {
+    public List<ProjectUserDto> getAllUserId() {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<List<UserIdOnlyDto>> exchange = restTemplate.exchange("http://localhost:9090/user/all",
+        ResponseEntity<List<ProjectUserDto>> exchange = restTemplate.exchange("http://localhost:9090/user/all",
             HttpMethod.GET,
             requestEntity,
-            new ParameterizedTypeReference<List<UserIdOnlyDto>>() {
+            new ParameterizedTypeReference<List<ProjectUserDto>>() {
             });
         return exchange.getBody();
     }

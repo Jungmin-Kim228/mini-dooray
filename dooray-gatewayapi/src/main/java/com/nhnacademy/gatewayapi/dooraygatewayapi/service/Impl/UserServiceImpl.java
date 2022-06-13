@@ -1,6 +1,7 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.service.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.UserAdapter;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserIdOnlyDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.UserService;
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserIdOnlyDto> getAllUserId() {
+    public List<ProjectUserDto> getAllUserId() {
         return userAdapter.getAllUserId();
     }
 }

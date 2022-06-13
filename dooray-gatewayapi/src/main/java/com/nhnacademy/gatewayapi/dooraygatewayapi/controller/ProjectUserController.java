@@ -2,6 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.controller;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserAddRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDeleteRequest;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.ProjectUserDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.UserIdOnlyDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.ProjectUserService;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.UserService;
@@ -23,8 +24,8 @@ public class ProjectUserController {
 
     @GetMapping("/projectUser/add/{projectNo}")
     public String projectUserAddForm(@PathVariable("projectNo") Integer projectNo, Model model) {
-        List<UserIdOnlyDto> allUserIds = userService.getAllUserId();
-        List<UserIdOnlyDto> userIds = projectUserService.excludeMember(allUserIds, projectNo);
+        List<ProjectUserDto> allUserIds = userService.getAllUserId();
+        List<ProjectUserDto> userIds = projectUserService.excludeMember(allUserIds, projectNo);
         model.addAttribute("projectNo", projectNo);
         model.addAttribute("userIds", userIds);
         return "projectUser/projectUserAddForm";

@@ -4,7 +4,22 @@ Host: localhost:9091
 Content-Type: application/json
 
 ###
-GET /projectUser/id/1
+POST /projectUser/add
 Host: localhost:9091
 Content-Type: application/json
+
+{
+  "userIdList": ["user2", "user3"],
+  "projectNo": 1
+}
+
+###
+POST /projectUser/delete
+Host: localhost:9091
+Content-Type: application/json
+
+{
+  "userId": "user3",
+  "projectNo": 1
+}
 

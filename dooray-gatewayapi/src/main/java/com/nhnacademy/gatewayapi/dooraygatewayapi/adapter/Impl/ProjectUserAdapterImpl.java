@@ -41,22 +41,6 @@ public class ProjectUserAdapterImpl implements ProjectUserAdapter {
     }
 
     @Override
-    public List<UserIdOnlyDto> getProjectUserId(Integer projectNo) {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
-
-        HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<List<UserIdOnlyDto>> exchange = restTemplate.exchange(
-            "http://localhost:9091/projectUser/id/" + projectNo,
-            HttpMethod.GET,
-            requestEntity,
-            new ParameterizedTypeReference<List<UserIdOnlyDto>>() {
-            });
-        return exchange.getBody();
-    }
-
-    @Override
     public void addProjectUser(ProjectUserAddRequest request) {
         RequestEntity<ProjectUserAddRequest> requestEntity = RequestEntity
             .post("http://localhost:9091/projectUser/add")

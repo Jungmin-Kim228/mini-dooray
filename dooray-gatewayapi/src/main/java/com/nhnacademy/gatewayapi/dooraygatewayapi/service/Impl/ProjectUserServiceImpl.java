@@ -22,9 +22,9 @@ public class ProjectUserServiceImpl implements ProjectUserService {
     }
 
     @Override
-    public List<UserIdOnlyDto> excludeMember(List<UserIdOnlyDto> allUserIds, Integer projectNo) {
-        List<UserIdOnlyDto> memberIds = projectUserAdapter.getProjectUserId(projectNo);
-        for (UserIdOnlyDto member : memberIds) {
+    public List<ProjectUserDto> excludeMember(List<ProjectUserDto> allUserIds, Integer projectNo) {
+        List<ProjectUserDto> memberIds = projectUserAdapter.getProjectUserDtosByProjectNo(projectNo);
+        for (ProjectUserDto member : memberIds) {
             allUserIds.remove(member);
         }
         return allUserIds;

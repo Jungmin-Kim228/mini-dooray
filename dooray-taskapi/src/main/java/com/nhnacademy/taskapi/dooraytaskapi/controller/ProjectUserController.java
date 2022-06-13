@@ -3,7 +3,6 @@ package com.nhnacademy.taskapi.dooraytaskapi.controller;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectUserAddRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectUserDeleteRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.ProjectUserDto;
-import com.nhnacademy.taskapi.dooraytaskapi.domain.UserIdOnlyDto;
 import com.nhnacademy.taskapi.dooraytaskapi.service.ProjectUserService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -26,18 +25,15 @@ public class ProjectUserController {
         return projectUserService.getProjectUserByProjectNo(no);
     }
 
-    @GetMapping("/id/{projectNo}")
-    public List<UserIdOnlyDto> getProjectUserIdByProjectNo(@PathVariable("projectNo") Integer no) {
-        return projectUserService.getProjectUserIdByProjectNo(no);
-    }
-
     @PostMapping("/add")
-    public void addProjectUser(@RequestBody ProjectUserAddRequest request) {
+    public String addProjectUser(@RequestBody ProjectUserAddRequest request) {
         projectUserService.addProjectUser(request);
+        return "projectUser add success";
     }
 
     @PostMapping("/delete")
-    public void deleteProjectUser(@RequestBody ProjectUserDeleteRequest request) {
+    public String deleteProjectUser(@RequestBody ProjectUserDeleteRequest request) {
         projectUserService.deleteProjectUser(request);
+        return "projectUser delete success";
     }
 }
