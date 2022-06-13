@@ -23,7 +23,7 @@
             <span th:text="${milestone?.milestoneName}"></span>
         </td>
         <td>
-            <span th:each="tag : ${tags}" th:text="${tag?.tagName}"></span>
+            <div th:each="tag : ${tags}" th:text="${tag?.tagName}"></div>
         </td>
     </tr>
 </table>
