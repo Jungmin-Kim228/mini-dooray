@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,5 +48,14 @@ public class TaskTag {
 
         @Column(name = "tag_no")
         private Integer tagNo;
+    }
+
+    @Builder(builderMethodName = "addTaskTag")
+    public static TaskTag registerTaskTag(Task task, Tag tag) {
+        TaskTag taskTag = new TaskTag();
+        taskTag.setTask(task);
+        taskTag.setTag(tag);
+        taskTag.setPk(new Pk(task.getTaskNo(), tag.getTagNo()));
+        return taskTag;
     }
 }

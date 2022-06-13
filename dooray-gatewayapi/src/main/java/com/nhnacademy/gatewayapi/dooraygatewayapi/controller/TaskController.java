@@ -41,12 +41,8 @@ public class TaskController {
     }
 
     @PostMapping("/task/register")
-    public String taskRegister(@ModelAttribute TaskRegisterRequest request, Model model) {
-
-        model.addAttribute("milestone",request.getMilestoneNo());
-        model.addAttribute("projectNo", request.getProjectNo());
-        model.addAttribute("taskRegistrant", request.getTaskRegistrant());
-        model.addAttribute("tagList",request.getTagNoList());
-        return "home/home";
+    public String taskRegister(@ModelAttribute TaskRegisterRequest request) {
+        taskService.registerTask(request);
+        return "redirect:/project/detail/"+request.getProjectNo();
     }
 }

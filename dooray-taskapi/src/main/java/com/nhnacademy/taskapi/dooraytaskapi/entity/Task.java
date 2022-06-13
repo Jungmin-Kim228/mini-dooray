@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -40,4 +41,15 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "milestone_no")
     private Milestone milestone;
+
+    @Builder(builderMethodName = "addTask")
+    public static Task registerTask(String title, String content, String registrant, Project project, Milestone milestone) {
+        Task task = new Task();
+        task.setTaskTitle(title);
+        task.setTaskContent(content);
+        task.setTaskRegistrant(registrant);
+        task.setProject(project);
+        task.setMilestone(milestone);
+        return task;
+    }
 }

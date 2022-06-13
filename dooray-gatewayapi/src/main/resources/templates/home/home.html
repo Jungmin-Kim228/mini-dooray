@@ -8,7 +8,6 @@
 <h1 style="display: inline" sec:authentication="name"></h1>
 <h1 style="display: inline">님 환영합니다!</h1>
 <hr/>
-
 <a sec:authorize="hasRole('ROLE_ANONYMOUS')" th:href="@{'/loginForm'}" th:text="로그인"></a>
 <span sec:authorize="hasRole('ROLE_MEMBER')">
     <a th:href="@{'/projectList'}" th:text="프로젝트"></a><br/>

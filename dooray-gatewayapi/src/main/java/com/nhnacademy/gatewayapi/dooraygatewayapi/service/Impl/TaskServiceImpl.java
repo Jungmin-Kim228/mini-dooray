@@ -2,6 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.service.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.TaskAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.TaskService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -18,4 +19,8 @@ public class TaskServiceImpl implements TaskService {
         return taskAdapter.getTaskDtosByProjectNo(projectNo);
     }
 
+    @Override
+    public void registerTask(TaskRegisterRequest request) {
+        taskAdapter.registerTask(request);
+    }
 }

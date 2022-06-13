@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>태스크 추가</h1><hr/>
-<form action="/task/register" method="post">
+<form action="/task/register" method="post" th:object="${item}">
     태스크 제목: <input type="text" name="taskTitle"/><br/>
     태스크 내용: <input type="text" name="taskContent"/><br/>
     마일스톤:
@@ -14,7 +14,7 @@
     <input type="radio" th:name="milestoneNo" th:value="0" th:text="없음"><br/>
     태그:
     <div th:each="tag : ${tags}">
-        <input type="checkbox" th:name="tagNoList" th:value="${tag.tagNo}">
+        <input type="checkbox" th:field="*{tagNoList}" th:value="${tag.tagNo}">
         <label th:text="${tag.tagName}"></label>
     </div>
     <input type="hidden" name="projectNo" th:value="${projectNo}"/>

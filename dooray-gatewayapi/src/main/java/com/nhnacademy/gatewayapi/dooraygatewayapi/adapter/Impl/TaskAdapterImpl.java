@@ -1,7 +1,9 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.TaskAdapter;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskRegisterRequest;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
@@ -9,6 +11,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -35,5 +38,13 @@ public class TaskAdapterImpl implements TaskAdapter {
         return exchange.getBody();
     }
 
+    @Override
+    public void registerTask(TaskRegisterRequest request) {
+        RequestEntity<TaskRegisterRequest> requestEntity = RequestEntity
+            .post("http://localhost:9091/task/register")
+            .accept(MediaType.APPLICATION_JSON)
+            .body(request);
 
+        restTemplate.exchange(requestEntity, new ParameterizedTypeReference<String>() {});
+    }
 }
