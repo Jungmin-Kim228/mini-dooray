@@ -36,8 +36,8 @@ public class MilestoneController {
     }
 
     @PostMapping("/delete")
-    public Integer deleteMilestone(@RequestBody Integer request) {
-        return milestoneService.deleteMilestone(request);
+    public Integer deleteMilestone(@RequestBody Integer milestoneNo) {
+        return milestoneService.deleteMilestone(milestoneNo);
     }
 
     @GetMapping("/taskNo/{taskNo}")

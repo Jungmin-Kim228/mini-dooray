@@ -5,10 +5,12 @@ import com.nhnacademy.taskapi.dooraytaskapi.domain.MilestoneModifyRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.MilestoneRegisterRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.Milestone;
 import com.nhnacademy.taskapi.dooraytaskapi.entity.Project;
+import com.nhnacademy.taskapi.dooraytaskapi.entity.Task;
 import com.nhnacademy.taskapi.dooraytaskapi.exception.MilestoneNotFoundException;
 import com.nhnacademy.taskapi.dooraytaskapi.exception.ProjectNotFoundException;
 import com.nhnacademy.taskapi.dooraytaskapi.repository.MilestoneRepository;
 import com.nhnacademy.taskapi.dooraytaskapi.repository.ProjectRepository;
+import com.nhnacademy.taskapi.dooraytaskapi.repository.TaskRepository;
 import com.nhnacademy.taskapi.dooraytaskapi.service.MilestoneService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ public class MilestoneServiceImpl implements MilestoneService {
 
     private final ProjectRepository projectRepository;
     private final MilestoneRepository milestoneRepository;
+    private final TaskRepository taskRepository;
 
     @Override
     public List<MilestoneDto> getMilestoneByProjectNo(Integer no) {
@@ -45,14 +48,26 @@ public class MilestoneServiceImpl implements MilestoneService {
             MilestoneNotFoundException::new);
         milestone.setMilestoneName(request.getMilestoneName());
         milestoneRepository.save(milestone);
+
+        List<Task> tasks = taskRepository.findTasksByMilestone_MilestoneNo(milestone.getMilestoneNo());
+        for (Task task : tasks) {
+            task.setMilestone(milestone);
+            taskRepository.save(task);
+        }
         return milestone.getProject().getProjectNo();
     }
 
     @Override
     @Transactional
-    public Integer deleteMilestone(Integer request) {
-        Milestone milestone = milestoneRepository.findById(request).orElseThrow(MilestoneNotFoundException::new);
+    public Integer deleteMilestone(Integer milestoneNo) {
+        Milestone milestone = milestoneRepository.findById(milestoneNo).orElseThrow(MilestoneNotFoundException::new);
         Integer projectNo = milestone.getProject().getProjectNo();
+
+        List<Task> tasks = taskRepository.findTasksByMilestone_MilestoneNo(milestoneNo);
+        for (Task task : tasks) {
+            task.setMilestone(null);
+        }
+
         milestoneRepository.delete(milestone);
         return projectNo;
     }
