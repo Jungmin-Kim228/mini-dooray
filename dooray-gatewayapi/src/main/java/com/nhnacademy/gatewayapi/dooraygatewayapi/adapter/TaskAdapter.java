@@ -1,6 +1,7 @@
 package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskRegisterRequest;
 import java.util.List;
 
@@ -11,4 +12,6 @@ public interface TaskAdapter {
     void registerTask(TaskRegisterRequest request);
 
     TaskDto getTaskDtoByTaskNo(Integer taskNo);
+
+    Integer modifyTask(TaskModifyRequest request);
 }

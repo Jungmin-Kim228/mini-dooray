@@ -85,8 +85,7 @@ public class TaskController {
 
     @PostMapping("/task/modify")
     public String taskModify(@ModelAttribute TaskModifyRequest request) {
-        taskService.modifyTask(request);
-
-        // here 
+        Integer projectNo = taskService.modifyTask(request);
+        return "redirect:/task/detail/"+request.getTaskNo()+"/"+projectNo;
     }
 }

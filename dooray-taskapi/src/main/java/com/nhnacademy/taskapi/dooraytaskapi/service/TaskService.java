@@ -1,6 +1,7 @@
 package com.nhnacademy.taskapi.dooraytaskapi.service;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TaskDto;
+import com.nhnacademy.taskapi.dooraytaskapi.domain.TaskModifyRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TaskRegisterRequest;
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface TaskService {
 
     TaskDto getTaskDtoByTaskNo(Integer no);
 
+    Integer modifyTask(TaskModifyRequest request);
 }

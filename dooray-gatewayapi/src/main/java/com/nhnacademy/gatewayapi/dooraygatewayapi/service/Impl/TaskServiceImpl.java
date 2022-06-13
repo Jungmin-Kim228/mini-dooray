@@ -2,6 +2,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.service.Impl;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.TaskAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.TaskService;
 import java.util.List;
@@ -27,5 +28,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public TaskDto getTaskDtoByTaskNo(Integer taskNo) {
         return taskAdapter.getTaskDtoByTaskNo(taskNo);
+    }
+
+    @Override
+    public Integer modifyTask(TaskModifyRequest request) {
+        return taskAdapter.modifyTask(request);
     }
 }

@@ -1,6 +1,7 @@
 package com.nhnacademy.taskapi.dooraytaskapi.controller;
 
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TaskDto;
+import com.nhnacademy.taskapi.dooraytaskapi.domain.TaskModifyRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.domain.TaskRegisterRequest;
 import com.nhnacademy.taskapi.dooraytaskapi.service.TaskService;
 import java.util.List;
@@ -32,5 +33,10 @@ public class TaskController {
     @GetMapping("/taskNo/{taskNo}")
     public TaskDto getTaskDtoByTaskNo(@PathVariable("taskNo") Integer no) {
         return taskService.getTaskDtoByTaskNo(no);
+    }
+
+    @PostMapping("/modify")
+    public Integer modifyTask(@RequestBody TaskModifyRequest request) {
+        return taskService.modifyTask(request);
     }
 }

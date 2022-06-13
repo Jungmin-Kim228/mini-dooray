@@ -3,6 +3,7 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.Impl;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.adapter.TaskAdapter;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskModifyRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskRegisterRequest;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -62,5 +63,15 @@ public class TaskAdapterImpl implements TaskAdapter {
             new ParameterizedTypeReference<TaskDto>() {
             });
         return exchange.getBody();
+    }
+
+    @Override
+    public Integer modifyTask(TaskModifyRequest request) {
+        RequestEntity<TaskModifyRequest> requestEntity = RequestEntity
+            .post("http://localhost:9091/task/modify")
+            .accept(MediaType.APPLICATION_JSON)
+            .body(request);
+
+        return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
     }
 }
