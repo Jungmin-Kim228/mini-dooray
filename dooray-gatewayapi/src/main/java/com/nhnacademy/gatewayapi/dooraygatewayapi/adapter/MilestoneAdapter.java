@@ -14,4 +14,6 @@ public interface MilestoneAdapter {
     Integer modifyMilestone(MilestoneModifyRequest request);
 
     Integer deleteMilestone(Integer milestoneNo);
+
+    MilestoneDto getMilestoneDtoByTaskNoAndProjectNo(Integer taskNo);
 }

@@ -3,9 +3,11 @@ package com.nhnacademy.taskapi.dooraytaskapi.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-public interface TagDto {
+@Getter
+@Setter
+public class TagDto {
 
-    Integer getTagNo();
+    private Integer tagNo;
 
-    String getTagName();
+    private String tagName;
 }

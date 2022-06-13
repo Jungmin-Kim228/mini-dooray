@@ -23,7 +23,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public List<TagDto> getTagByProjectNo(Integer no) {
-        return tagRepository.getTagsByProject_ProjectNo(no);
+        return tagRepository.getTagsByProjectNo(no);
     }
 
     @Override
@@ -51,5 +51,10 @@ public class TagServiceImpl implements TagService {
         Integer projectNo = tag.getProject().getProjectNo();
         tagRepository.delete(tag);
         return projectNo;
+    }
+
+    @Override
+    public List<TagDto> getTagDtosByTaskNo(Integer taskNo) {
+        return tagRepository.getTagDtosByTaskNo(taskNo);
     }
 }

@@ -14,4 +14,6 @@ public interface TagService {
     Integer modifyTag(TagModifyRequest request);
 
     Integer deleteTag(Integer tagNo);
+
+    List<TagDto> getTagDtosByTaskNo(Integer taskNo);
 }

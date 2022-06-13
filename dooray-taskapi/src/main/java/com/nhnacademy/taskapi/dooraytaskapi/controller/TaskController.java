@@ -19,7 +19,7 @@ public class TaskController {
 
     private final TaskService taskService;
 
-    @GetMapping("/no/{projectNo}")
+    @GetMapping("/projectNo/{projectNo}")
     public List<TaskDto> getTaskByProjectNo(@PathVariable("projectNo") Integer no) {
         return taskService.getTaskByProjectNo(no);
     }
@@ -27,5 +27,10 @@ public class TaskController {
     @PostMapping("/register")
     public void registerTask(@RequestBody TaskRegisterRequest request) {
         taskService.registerTask(request);
+    }
+
+    @GetMapping("/taskNo/{taskNo}")
+    public TaskDto getTaskDtoByTaskNo(@PathVariable("taskNo") Integer no) {
+        return taskService.getTaskDtoByTaskNo(no);
     }
 }

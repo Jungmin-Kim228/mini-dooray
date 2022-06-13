@@ -48,7 +48,7 @@ public class ProjectController {
         return "project/projectRegisterForm";
     }
 
-    @PostMapping("/projectRegister")
+    @PostMapping("/project/register")
     public String projectRegister(@ModelAttribute ProjectRegisterRequest request) {
         projectService.registerProject(request);
         return "redirect:/projectList";

@@ -23,4 +23,9 @@ public class TaskServiceImpl implements TaskService {
     public void registerTask(TaskRegisterRequest request) {
         taskAdapter.registerTask(request);
     }
+
+    @Override
+    public TaskDto getTaskDtoByTaskNo(Integer taskNo) {
+        return taskAdapter.getTaskDtoByTaskNo(taskNo);
+    }
 }

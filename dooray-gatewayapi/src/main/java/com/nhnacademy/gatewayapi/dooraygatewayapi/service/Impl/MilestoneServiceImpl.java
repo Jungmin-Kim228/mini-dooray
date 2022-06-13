@@ -34,4 +34,9 @@ public class MilestoneServiceImpl implements MilestoneService {
     public Integer deleteMilestone(Integer milestoneNo) {
         return milestoneAdapter.deleteMilestone(milestoneNo);
     }
+
+    @Override
+    public MilestoneDto getMilestoneDtoByTaskNo(Integer taskNo) {
+        return milestoneAdapter.getMilestoneDtoByTaskNoAndProjectNo(taskNo);
+    }
 }

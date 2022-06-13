@@ -30,7 +30,7 @@ public class TagAdapterImpl implements TagAdapter {
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
         ResponseEntity<List<TagDto>> exchange = restTemplate.exchange(
-            "http://localhost:9091/tag/no/" + projectNo,
+            "http://localhost:9091/tag/projectNo/" + projectNo,
             HttpMethod.GET,
             requestEntity,
             new ParameterizedTypeReference<List<TagDto>>() {
@@ -66,5 +66,21 @@ public class TagAdapterImpl implements TagAdapter {
             .body(tagNo);
 
         return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
+    }
+
+    @Override
+    public List<TagDto> getTagDtosByTaskNo(Integer taskNo) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
+        ResponseEntity<List<TagDto>> exchange = restTemplate.exchange(
+            "http://localhost:9091/tag/taskNo/" + taskNo,
+            HttpMethod.GET,
+            requestEntity,
+            new ParameterizedTypeReference<List<TagDto>>() {
+            });
+        return exchange.getBody();
     }
 }

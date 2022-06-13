@@ -8,4 +8,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 public interface TaskRepositoryCustom {
 
     List<TaskDto> getTaskByProjectNo(Integer no);
+
+    TaskDto getTaskDtoByTaskNo(Integer no);
+
 }

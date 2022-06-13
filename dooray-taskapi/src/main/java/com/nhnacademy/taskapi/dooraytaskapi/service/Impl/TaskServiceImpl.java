@@ -62,4 +62,9 @@ public class TaskServiceImpl implements TaskService {
             taskTagRepository.save(taskTag);
         }
     }
+
+    @Override
+    public TaskDto getTaskDtoByTaskNo(Integer no) {
+        return taskRepository.getTaskDtoByTaskNo(no);
+    }
 }

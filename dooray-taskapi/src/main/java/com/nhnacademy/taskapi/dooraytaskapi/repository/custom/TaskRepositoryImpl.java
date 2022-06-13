@@ -24,7 +24,22 @@ public class TaskRepositoryImpl extends QuerydslRepositorySupport implements Tas
             .select(Projections.bean(TaskDto.class,
                 task.taskNo,
                 task.taskTitle,
-                task.taskRegistrant))
+                task.taskRegistrant,
+                task.taskContent))
             .fetch();
+    }
+
+    @Override
+    public TaskDto getTaskDtoByTaskNo(Integer no) {
+        QTask task = QTask.task;
+
+        return from(task)
+            .where(task.taskNo.eq(no))
+            .select(Projections.bean(TaskDto.class,
+                task.taskNo,
+                task.taskTitle,
+                task.taskRegistrant,
+                task.taskContent))
+            .fetchOne();
     }
 }

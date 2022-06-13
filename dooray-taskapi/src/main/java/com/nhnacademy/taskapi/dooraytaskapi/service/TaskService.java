@@ -9,4 +9,7 @@ public interface TaskService {
     List<TaskDto> getTaskByProjectNo(Integer no);
 
     void registerTask(TaskRegisterRequest request);
+
+    TaskDto getTaskDtoByTaskNo(Integer no);
+
 }

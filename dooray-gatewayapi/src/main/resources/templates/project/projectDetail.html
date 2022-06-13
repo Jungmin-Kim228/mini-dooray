@@ -15,10 +15,14 @@
     <tr>
         <th>제목</th>
         <th>등록자</th>
+        <th>상세보기</th>
     </tr>
     <tr th:each="task : ${tasks}">
         <td th:text="${task.taskTitle}"></td>
         <td th:text="${task.taskRegistrant}"></td>
+        <td>
+            <a th:href="@{/task/detail/{taskNo}/{projectNo}(taskNo = ${task.taskNo}, projectNo = ${project.projectNo})}"><button>상세</button></a>
+        </td>
     </tr>
 </table><hr/>
 <h4 th:text="마일스톤"></h4>

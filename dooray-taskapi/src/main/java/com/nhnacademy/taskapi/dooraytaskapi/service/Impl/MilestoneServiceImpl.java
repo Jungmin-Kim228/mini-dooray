@@ -52,4 +52,9 @@ public class MilestoneServiceImpl implements MilestoneService {
         milestoneRepository.delete(milestone);
         return projectNo;
     }
+
+    @Override
+    public MilestoneDto getMilestoneDtoByTaskNo(Integer taskNo) {
+        return milestoneRepository.getMilestoneDtoByTaskNo(taskNo);
+    }
 }

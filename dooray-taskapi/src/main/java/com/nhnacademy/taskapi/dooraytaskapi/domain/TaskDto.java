@@ -12,4 +12,7 @@ public class TaskDto {
     private String taskTitle;
 
     private String taskRegistrant;
+
+    private String taskContent;
+
 }

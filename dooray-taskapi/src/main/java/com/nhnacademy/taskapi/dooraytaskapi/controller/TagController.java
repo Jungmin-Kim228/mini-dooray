@@ -20,7 +20,7 @@ public class TagController {
 
     private final TagService tagService;
 
-    @GetMapping("/no/{projectNo}")
+    @GetMapping("/projectNo/{projectNo}")
     public List<TagDto> getTagByProjectNo(@PathVariable("projectNo") Integer no) {
         return tagService.getTagByProjectNo(no);
     }
@@ -38,5 +38,10 @@ public class TagController {
     @PostMapping("/delete")
     public Integer deleteTag(@RequestBody Integer request) {
         return tagService.deleteTag(request);
+    }
+
+    @GetMapping("/taskNo/{taskNo}")
+    public List<TagDto> getTagDtosByTaskNo(@PathVariable("taskNo") Integer taskNo) {
+        return tagService.getTagDtosByTaskNo(taskNo);
     }
 }

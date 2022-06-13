@@ -20,7 +20,7 @@ public class MilestoneController {
 
     private final MilestoneService milestoneService;
 
-    @GetMapping("/no/{projectNo}")
+    @GetMapping("/projectNo/{projectNo}")
     public List<MilestoneDto> getMilestoneByProjectNo(@PathVariable("projectNo") Integer no) {
         return milestoneService.getMilestoneByProjectNo(no);
     }
@@ -38,5 +38,10 @@ public class MilestoneController {
     @PostMapping("/delete")
     public Integer deleteMilestone(@RequestBody Integer request) {
         return milestoneService.deleteMilestone(request);
+    }
+
+    @GetMapping("/taskNo/{taskNo}")
+    public MilestoneDto getMilestoneDtoByTaskNo(@PathVariable("taskNo") Integer taskNo) {
+        return milestoneService.getMilestoneDtoByTaskNo(taskNo);
     }
 }

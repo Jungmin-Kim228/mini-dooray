@@ -14,4 +14,6 @@ public interface MilestoneService {
     Integer modifyMilestone(MilestoneModifyRequest request);
 
     Integer deleteMilestone(Integer milestoneNo);
+
+    MilestoneDto getMilestoneDtoByTaskNo(Integer taskNo);
 }

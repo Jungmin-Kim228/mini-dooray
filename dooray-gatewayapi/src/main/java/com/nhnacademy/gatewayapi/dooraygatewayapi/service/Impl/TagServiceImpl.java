@@ -34,4 +34,9 @@ public class TagServiceImpl implements TagService {
     public Integer deleteTag(Integer tagNo) {
         return tagAdapter.deleteTag(tagNo);
     }
+
+    @Override
+    public List<TagDto> getTagDtosByTaskNo(Integer taskNo) {
+        return tagAdapter.getTagDtosByTaskNo(taskNo);
+    }
 }

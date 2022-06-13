@@ -30,7 +30,7 @@ public class TaskAdapterImpl implements TaskAdapter {
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
         ResponseEntity<List<TaskDto>> exchange = restTemplate.exchange(
-            "http://localhost:9091/task/no/" + projectNo,
+            "http://localhost:9091/task/projectNo/" + projectNo,
             HttpMethod.GET,
             requestEntity,
             new ParameterizedTypeReference<List<TaskDto>>() {
@@ -46,5 +46,21 @@ public class TaskAdapterImpl implements TaskAdapter {
             .body(request);
 
         restTemplate.exchange(requestEntity, new ParameterizedTypeReference<String>() {});
+    }
+
+    @Override
+    public TaskDto getTaskDtoByTaskNo(Integer taskNo) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
+        ResponseEntity<TaskDto> exchange = restTemplate.exchange(
+            "http://localhost:9091/task/taskNo/" + taskNo,
+            HttpMethod.GET,
+            requestEntity,
+            new ParameterizedTypeReference<TaskDto>() {
+            });
+        return exchange.getBody();
     }
 }

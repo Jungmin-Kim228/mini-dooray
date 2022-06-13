@@ -2,11 +2,13 @@ package com.nhnacademy.gatewayapi.dooraygatewayapi.controller;
 
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.MilestoneDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TagDto;
+import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskDto;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.domain.TaskRegisterRequest;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.MilestoneService;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.TagService;
 import com.nhnacademy.gatewayapi.dooraygatewayapi.service.TaskService;
 import java.util.List;
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -44,5 +46,19 @@ public class TaskController {
     public String taskRegister(@ModelAttribute TaskRegisterRequest request) {
         taskService.registerTask(request);
         return "redirect:/project/detail/"+request.getProjectNo();
+    }
+
+    @GetMapping("/task/detail/{taskNo}/{projectNo}")
+    public String taskDetail(@PathVariable("taskNo") Integer taskNo,
+                             @PathVariable("projectNo") Integer projectNo, Model model) {
+        TaskDto taskDto = taskService.getTaskDtoByTaskNo(taskNo);
+        MilestoneDto milestoneDto = milestoneService.getMilestoneDtoByTaskNo(taskNo);
+        List<TagDto> tagDtos = tagService.getTagDtosByTaskNo(taskNo);
+
+        model.addAttribute("projectNo", projectNo);
+        model.addAttribute("task", taskDto);
+        model.addAttribute("milestone", milestoneDto);
+        model.addAttribute("tags", tagDtos);
+        return "task/taskDetail";
     }
 }

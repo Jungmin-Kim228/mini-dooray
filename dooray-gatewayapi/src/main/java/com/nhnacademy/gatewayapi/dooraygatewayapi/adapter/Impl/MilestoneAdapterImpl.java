@@ -30,7 +30,7 @@ public class MilestoneAdapterImpl implements MilestoneAdapter {
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
         ResponseEntity<List<MilestoneDto>> exchange = restTemplate.exchange(
-            "http://localhost:9091/milestone/no/" + projectNo,
+            "http://localhost:9091/milestone/projectNo/" + projectNo,
             HttpMethod.GET,
             requestEntity,
             new ParameterizedTypeReference<List<MilestoneDto>>() {
@@ -66,5 +66,21 @@ public class MilestoneAdapterImpl implements MilestoneAdapter {
             .body(milestoneNo);
 
         return restTemplate.exchange(requestEntity, new ParameterizedTypeReference<Integer>() {}).getBody();
+    }
+
+    @Override
+    public MilestoneDto getMilestoneDtoByTaskNoAndProjectNo(Integer taskNo) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
+
+        HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
+        ResponseEntity<MilestoneDto> exchange = restTemplate.exchange(
+            "http://localhost:9091/milestone/taskNo/"+taskNo,
+            HttpMethod.GET,
+            requestEntity,
+            new ParameterizedTypeReference<MilestoneDto>() {
+            });
+        return exchange.getBody();
     }
 }
