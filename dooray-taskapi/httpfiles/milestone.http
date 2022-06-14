@@ -19,7 +19,7 @@ Host: localhost:9091
 Content-Type: application/json
 
 {
-  "milestoneNo": 8,
+  "milestoneNo": 4,
   "milestoneName": "프로젝트1 마일스톤 rest modify"
 }
 
@@ -29,5 +29,5 @@ Host: localhost:9091
 Content-Type: application/json
 
 {
-  "no" : 8
+  "no" : 4
 }

@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ###
-GET /task/taskNo/5
+GET /task/taskNo/4
 Host: localhost:9091
 Content-Type: application/json
 
@@ -28,7 +28,7 @@ Host: localhost:9091
 Content-Type: application/json
 
 {
-  "taskNo": 5,
+  "taskNo": 4,
   "taskTitle": "태스크 rest modify",
   "taskContent": "태스크내용 rest modify",
   "milestoneNo": 2,
@@ -41,7 +41,7 @@ Host: localhost:9091
 Content-Type: application/json
 
 {
-  "no": 5
+  "no": 4
 }
 
 

@@ -5,9 +5,9 @@ Host: localhost:9090
 Content-Type: application/json
 
 {
-  "userEmail": "one@dooray.com",
-  "userId": "user1",
-  "userPw": "1111"
+  "userEmail": "testUser@dooray.com",
+  "userId": "testId",
+  "userPw": "testPw"
 }
 
 ###
